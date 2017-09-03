@@ -8,8 +8,9 @@
 
 ### Bumping Package Version
 - first commit all changes as usual
-- then run `lerna publish` in repo root, bumping version appropriately for each package that has been changed since the
-  last `lerna publish`
+- (optional) run `lerna updated` to see which packages have "un-released" changes (changes that have not yet been tagged with a version number
+- then run `lerna publish` in repo root, bumping version appropriately for each package that has been changed since the last `lerna publish`
+- `lerna publish -m "changes made"` can be used to label releases
 
 ### Installing Dependencies
 - add dependencies to respective `package.json`s (whethe a local or npm-hosted dependency)
