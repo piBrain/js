@@ -1,0 +1,30 @@
+$gray-color: #f7f7f7;
+.app-container {
+	position: relative;
+	top: 48px;
+	width: 100%;
+	height: 100vh;
+}
+
+.aura-container {
+	position:relative;
+	background: white;
+	width: 100%;
+	transition: transform 600ms;
+	transition-timing-function: cubic-bezier(.56,.97,.94,.99);
+	height: 100vh;
+  overflow:hidden;
+
+  .wc-title {
+    position:absolute;
+    top: 20%;
+    left:45%;
+    font: 36px 'PT Mono', monospace;
+    transform: translate( -20%, -50% );
+  }
+
+
+	&.pushed {
+		 transform: translateX(30vw);
+	}
+}
