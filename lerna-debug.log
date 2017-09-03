@@ -1,0 +1,53 @@
+0 silly input [ 'publish' ]
+1 silly flags { _: [ 'publish' ] }
+2 verbose rootPath /Users/watsonmarkson/piBrain/js
+3 info version 2.1.0
+4 info versioning independent
+5 silly isInitialized
+6 silly isInitialized true
+7 silly existsSync /Users/watsonmarkson/piBrain/js/VERSION
+8 silly initialize attempt
+9 silly getUpdates
+10 info Checking for updated packages...
+11 silly hasTags
+12 verbose hasTags false
+13 info Comparing with initial commit.
+14 verbose updated aura-gql
+15 silly collectDependents
+16 silly isPackageDependentOf aura-gql aura-gql
+17 silly collectUpdates
+18 verbose has filtered update aura-gql
+19 silly initialize success
+20 silly execute attempt
+21 silly isDetachedHead
+22 silly getCurrentBranch
+23 error execute Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+23 error execute Use '--' to separate paths from revisions, like this:
+23 error execute 'git <command> [<revision>...] -- [<file>...]'
+23 error execute
+23 error execute     at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)
+23 error execute     at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+23 error execute     at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)
+23 error execute     at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)
+23 error execute     at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)
+23 error execute     at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9
+23 error execute  callback with error
+23 error execute  { Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+23 error execute Use '--' to separate paths from revisions, like this:
+23 error execute 'git <command> [<revision>...] -- [<file>...]'
+23 error execute
+23 error execute     at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)
+23 error execute     at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+23 error execute     at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)
+23 error execute     at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)
+23 error execute     at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)
+23 error execute     at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11
+23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9
+23 error execute   stack: 'Error: fatal: ambiguous argument \'HEAD\': unknown revision or path not in the working tree.\nUse \'--\' to separate paths from revisions, like this:\n\'git <command> [<revision>...] -- [<file>...]\'\n\n    at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)\n    at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)\n    at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)\n    at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)\n    at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)\n    at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9' }
