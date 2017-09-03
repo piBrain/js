@@ -1,0 +1,21 @@
+.app-container {
+	position: relative;
+	top: 48px;
+	background: wheat;
+	width: 100%;
+	height: 100vh;
+}
+
+.aura-container {
+	position:relative;
+	background: rgb(216, 214, 226);
+	width: 100%;
+	transition: transform 600ms;
+	transition-timing-function: cubic-bezier(.56,.97,.94,.99);
+	height: 100vh;
+  overflow:hidden;
+
+	&.pushed {
+		 transform: translateX(30vw);
+	}
+}
