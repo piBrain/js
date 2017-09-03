@@ -2,15 +2,14 @@
 
 ## How Tos
 
-### Committing Changes (to a particular package)
-- edit files normally but
-- DO NOT `git commit` changes made in `packages/**/*`
-- DO `git add` the changes you would like to commit to a particular package
-- then run `lerna publish` in repo root
-
-### Committing Changes (outside the packages)
+### Committing Changes
 - edit files normally
 - use `git add` and `git commit` as usual
+
+### Bumping Package Version
+- first commit all changes as usual
+- then run `lerna publish` in repo root, bumping version appropriately for each package that has been changed since the
+  last `lerna publish`
 
 ### Installing Dependencies
 - add dependencies to respective `package.json`s (whethe a local or npm-hosted dependency)
