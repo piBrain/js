@@ -1,0 +1,25 @@
+.automations-container {
+  display: none; }
+  .automations-container.active {
+    display: block;
+    overflow: hidden; }
+  .automations-container .section-title {
+    font-family: 'Overpass Mono', monospace;
+    font-size: 24px;
+    margin: 40px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px; }
+
+.automation-header {
+  text-align: center;
+  font: 18px 'PT Mono', sans-serif;
+  color: rgba(34, 34, 34, 0.63);
+  border-bottom: 1px solid rgba(34, 34, 68, 0.23);
+  margin: 20px 30px;
+  padding-bottom: 10px; }
+
+.automation-wrapper {
+  background: #9bb18a;
+  box-shadow: inset 0px 0px 8px -1px #888888;
+  padding: 40px;
+  overflow: hidden; }

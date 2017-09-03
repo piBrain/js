@@ -1,0 +1,11 @@
+.message-container {
+  font: 12px 'PT Mono', monospace;
+  background: #c6ceb9;
+  width: 25%;
+  margin: 15px 15px;
+  border-radius: 5px;
+  border: 1px solid #fff8f8;
+  box-shadow: -2px -1px 4px 0px #9fa4b1;
+  position: relative; }
+  .message-container.aura {
+    background: #98c5ec; }

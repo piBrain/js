@@ -1,0 +1,20 @@
+.signup-form {
+  select {
+    width: 23%;
+    padding: 8px 20px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 3px solid #d8d6e2;
+    -webkit-transition: 0.5s;
+    font: 12px 'PT Mono', monospace;
+    transition: 0.5s;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  select:hover{ color: white; background: #222; }
+}
+

@@ -1,0 +1,46 @@
+$profile-width: 30vw;
+$new-blue: #98c5ec;
+
+.side-container {
+	position: absolute;
+	overflow:hidden;
+  min-width: 440px;
+  display:none;
+	background: white;
+	left: -$profile-width;
+	z-index: 90;
+	width: $profile-width;
+	height: 100vh;
+	-webkit-box-shadow: 5px -5px 39px -14px rgba(0,0,0,1);
+	-moz-box-shadow: 5px -5px 39px -14px rgba(0,0,0,1);
+	box-shadow: 5px -5px 39px -14px rgba(0,0,0,1);
+	transition: transform 600ms;
+	transition-timing-function: cubic-bezier(.56,.97,.94,.99);
+
+	&.active {
+		 transform: translateX(30vw);
+	}
+
+  .footer-links {
+    text-align: center;
+    font: 12px 'PT Mono', monpspace;
+    position: relative;
+    top: 3.9%;
+
+    &.adjust {
+      top: 45%;
+    }
+
+    span {
+      cursor:pointer;
+    }
+  }
+}
+.header-fade-appear {
+   opacity: 0.01;
+}
+
+.header-fade-appear.header-fade-appear-active {
+   opacity: 1;
+   transition: opacity 500ms ease-in;
+}
