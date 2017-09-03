@@ -1,0 +1,10 @@
+{
+  "author": "piBrain, Inc.",
+  "description": "apollo-powered graphql client for aura api",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "aura-gql",
+  "private": true,
+  "repository": "https://github.com/piBrain/js/packages/aura-gql",
+  "version": "0.0.1-0"
+}
