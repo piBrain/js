@@ -1,5 +1,5 @@
-0 silly input [ 'publish' ]
-1 silly flags { _: [ 'publish' ] }
+0 silly input [ '../aura-fe' ]
+1 silly flags { _: [ 'import' ], pathToRepo: '../aura-fe' }
 2 verbose rootPath /Users/watsonmarkson/piBrain/js
 3 info version 2.1.0
 4 info versioning independent
@@ -7,47 +7,31 @@
 6 silly isInitialized true
 7 silly existsSync /Users/watsonmarkson/piBrain/js/VERSION
 8 silly initialize attempt
-9 silly getUpdates
-10 info Checking for updated packages...
-11 silly hasTags
-12 verbose hasTags false
-13 info Comparing with initial commit.
-14 verbose updated aura-gql
-15 silly collectDependents
-16 silly isPackageDependentOf aura-gql aura-gql
-17 silly collectUpdates
-18 verbose has filtered update aura-gql
-19 silly initialize success
-20 silly execute attempt
-21 silly isDetachedHead
-22 silly getCurrentBranch
-23 error execute Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
-23 error execute Use '--' to separate paths from revisions, like this:
-23 error execute 'git <command> [<revision>...] -- [<file>...]'
-23 error execute
-23 error execute     at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)
-23 error execute     at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
-23 error execute     at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)
-23 error execute     at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)
-23 error execute     at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)
-23 error execute     at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9
-23 error execute  callback with error
-23 error execute  { Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
-23 error execute Use '--' to separate paths from revisions, like this:
-23 error execute 'git <command> [<revision>...] -- [<file>...]'
-23 error execute
-23 error execute     at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)
-23 error execute     at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
-23 error execute     at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)
-23 error execute     at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)
-23 error execute     at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)
-23 error execute     at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11
-23 error execute     at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9
-23 error execute   stack: 'Error: fatal: ambiguous argument \'HEAD\': unknown revision or path not in the working tree.\nUse \'--\' to separate paths from revisions, like this:\n\'git <command> [<revision>...] -- [<file>...]\'\n\n    at Function.module.exports.sync (/Users/watsonmarkson/.config/yarn/global/node_modules/execa/index.js:303:26)\n    at Function.execSync (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)\n    at Function.getCurrentBranch (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:183:59)\n    at Function.isDetachedHead (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/GitUtilities.js:37:37)\n    at PublishCommand.execute (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:259:55)\n    at PublishCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:276:15\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:301:13\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/PublishCommand.js:531:11\n    at /Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/PromptUtilities.js:38:9' }
+9 silly statSync /Users/watsonmarkson/piBrain/aura-fe
+10 silly existsSync /Users/watsonmarkson/piBrain/js/packages/aura-fe
+11 silly getCurrentSHA
+12 verbose getCurrentSHA 854273cfc92cdb6a3699c21039b79ef100c86044
+13 error initialize Error: Local repository has un-committed changes
+13 error initialize     at ImportCommand.initialize (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:139:25)
+13 error initialize     at ImportCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
+13 error initialize     at ImportCommand.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:275:12)
+13 error initialize     at ImportCommand.run (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:160:12)
+13 error initialize     at Object.handler (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:53:53)
+13 error initialize     at Object.self.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/lib/command.js:233:22)
+13 error initialize     at Object.Yargs.self._parseArgs (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:990:30)
+13 error initialize     at Object.Yargs.self.parse (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:532:23)
+13 error initialize     at Object.<anonymous> (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/bin/lerna.js:4:25)
+13 error initialize     at Module._compile (module.js:573:30)
+13 error initialize  callback with error
+13 error initialize  { Error: Local repository has un-committed changes
+13 error initialize     at ImportCommand.initialize (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:139:25)
+13 error initialize     at ImportCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)
+13 error initialize     at ImportCommand.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:275:12)
+13 error initialize     at ImportCommand.run (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:160:12)
+13 error initialize     at Object.handler (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:53:53)
+13 error initialize     at Object.self.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/lib/command.js:233:22)
+13 error initialize     at Object.Yargs.self._parseArgs (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:990:30)
+13 error initialize     at Object.Yargs.self.parse (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:532:23)
+13 error initialize     at Object.<anonymous> (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/bin/lerna.js:4:25)
+13 error initialize     at Module._compile (module.js:573:30)
+13 error initialize   stack: 'Error: Local repository has un-committed changes\n    at ImportCommand.initialize (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:139:25)\n    at ImportCommand._attempt (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:289:21)\n    at ImportCommand.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:275:12)\n    at ImportCommand.run (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/Command.js:160:12)\n    at Object.handler (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/lib/commands/ImportCommand.js:53:53)\n    at Object.self.runCommand (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/lib/command.js:233:22)\n    at Object.Yargs.self._parseArgs (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:990:30)\n    at Object.Yargs.self.parse (/Users/watsonmarkson/.config/yarn/global/node_modules/yargs/yargs.js:532:23)\n    at Object.<anonymous> (/Users/watsonmarkson/.config/yarn/global/node_modules/lerna/bin/lerna.js:4:25)\n    at Module._compile (module.js:573:30)' }
