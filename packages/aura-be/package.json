@@ -63,5 +63,5 @@
     "send-to-prod": "printf 'building...' && yarn build && if [ -e api.zip ]; then rm -f api.zip; fi && printf 'compressing...' && zip -qr api * && printf 'uploading...' && aws lambda update-function-code --function-name aura_be_prod --zip-file fileb://api.zip",
     "test": "jest --config jest-config.json"
   },
-  "version": "0.0.1-0"
+  "version": "0.0.1-1"
 }
