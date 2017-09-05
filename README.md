@@ -1,6 +1,12 @@
 # welcome to js funland
 
-## How Tos
+## How To's
+
+### Branching
+- since this single git is responsible for several distinct packages, it is important to note the package being changed
+  in the branch name, in addition to a description of the changes being made and the pivotal hash
+- `${packageName}-${pivotalHash}-${description}`
+- `aura-be-2039487-create-users`
 
 ### Committing Changes
 - edit files normally
