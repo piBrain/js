@@ -45,7 +45,7 @@
   },
   "license": "MIT",
   "main": "src/index.js",
-  "name": "api",
+  "name": "aura-be",
   "private": true,
   "repository": "https://github.com/piBrain/aura_data_qa",
   "scripts": {
