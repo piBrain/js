@@ -6,5 +6,16 @@
   "name": "aura-gql",
   "private": true,
   "repository": "https://github.com/piBrain/js/packages/aura-gql",
-  "version": "0.0.1-0"
+  "scripts": {
+    "build": "./node_modules/.bin/babel src/index.js --out-file index.js"
+  },
+  "version": "0.0.1-0",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+  },
+  "dependencies": {
+    "apollo-local-query": "^0.3.0",
+    "expect": "^21.0.2"
+  }
 }
