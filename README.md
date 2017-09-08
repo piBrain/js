@@ -3,10 +3,9 @@
 
 ## Project Dependencies
 
-### `yarn`
-- as of 09/05/17, [a nightly build of yarn](https://yarnpkg.com/en/docs/nightly) is required for the "workspaces" monorepo functionality
-- after installing the nightly build, open a new terminal and run `yarn config set workspaces-experimental true`
-- [yarn install instructions](https://yarnpkg.com/lang/en/docs/install/)
+### [`yarn`](https://github.com/yarnpkg/yarn)
+- after [installing yarn](https://yarnpkg.com/lang/en/docs/install/) at least v1.0 (check with `yarn --version`), open a new terminal and run 
+`yarn config set workspaces-experimental true`
 ### [`lerna`](https://github.com/lerna/lerna)
 - `yarn global add lerna`
 
