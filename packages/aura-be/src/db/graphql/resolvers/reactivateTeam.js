@@ -8,6 +8,7 @@ const executeReactivateTeam = async ({ nonce, name }) => {
     if(!user) { return { err: true, response: 'Whoops! Something went wrong.' } }
     const teams = await user.getTeams()
     const team = teams.filter((team) => (team.name == name))[0]
+    if(!team) { return { err: true, response: 'You are not a member of that team.' } }
     if(team.active) { return { err: true, response: 'Team already reactivated!' } }
     const userTeam = team.UserTeam
     if(userTeam.get('type') != 'OWNER') { return { err: true, response: `Must be the owner of the team!`} }
