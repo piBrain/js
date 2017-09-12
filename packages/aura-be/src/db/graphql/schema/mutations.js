@@ -9,6 +9,7 @@ export default () => [
     requestAddTeamMember( nonce: String!, url: String!, targetUser: String!, teamName: String! ): JSON
     resetPassword(nonce: String!, resetToken: String!, newPassword: String!): JSON
     sendRequest(nonce: String!, teamName: String!, message: String!, state: JSON!): JSON
+    sendResponse(nonce: String!, userTeamId: String!, message: String!): JSON
     signUpUser(
       firstName: String!,
       lastName: String!,
