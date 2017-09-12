@@ -4,3 +4,4 @@ packages/*/node_modules
 packages/*/lib
 packages/*/build
 packages/*/public
+**/*..bfg-report
