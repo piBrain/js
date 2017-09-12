@@ -7,7 +7,7 @@ const executeSendRequest = async ({ nonce, teamName, message, state } = { state:
     let user = await session.getUser()
     if(!user) { return { err: true, response: 'Whoops! Something went wrong.' } }
     const teams = await user.getTeams()
-    const team = teams.filter((team) => (team.name == teamName))[0]
+    const team = teams.filter((team) => (team.name === teamName))[0]
     if(!team) { return { err: true, response: 'You are not a member of that team.' } }
     if(!team.active) { return { err: true, response: 'Team not active! Cannot send request.' } }
     const request = await db.Message.create({text: message, state: state, type: 'REQUEST', userTeamId: team.UserTeam.get('tag')})
