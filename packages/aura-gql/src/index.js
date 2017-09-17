@@ -5,7 +5,9 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 
 class AuraGqlClient extends ApolloClient {
   constructor({ options, schema, uri }) {
-    expect(schema || uri, 'AuraGqlClient requires either a uri or grqphql schema')
+    if(!schema && !uri) {
+      throw 'AuraGqlClient requires either a uri or grqphql schema'
+    }
     const isLocalClient = schema && !uri
     let networkInterface
 
