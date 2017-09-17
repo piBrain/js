@@ -6,18 +6,14 @@ import awsServerlessExpress from 'aws-serverless-express'
 import bodyParser from 'body-parser'
 import express from 'express'
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express'
-import { makeExecutableSchema } from 'graphql-tools'
-import typeDefs from './db/graphql/schema/base_schema'
-import resolvers from './db/graphql/resolvers/combinedResolvers'
 import db from './db/sequelize/models/db_connection'
 import cors from 'cors'
 import GoogleAuth from 'google-auth-library'
 import crypto from 'crypto'
 import base64url from 'base64url'
+import schema from './db/graphql/schema/base_schema'
 
 const qaApp = express()
-
-const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 const authClient = new(new GoogleAuth).OAuth2(process.env.GOOGLE_CLIENT_ID)
 

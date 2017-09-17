@@ -10,6 +10,7 @@ export default () => [
     resetPassword(nonce: String!, resetToken: String!, newPassword: String!): JSON
     sendRequest(nonce: String!, teamName: String!, message: String!, state: JSON!): JSON
     sendResponse(nonce: String!, userTeamId: String!, message: String!): JSON
+    setConfidenceLevel(nonce: String!, messageId: String!): JSON
     signUpUser(
       firstName: String!,
       lastName: String!,

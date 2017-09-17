@@ -1,6 +1,7 @@
 import Mutations from './mutations'
 import Queries from './queries'
-
+import resolvers from '../resolvers/combinedResolvers'
+import { makeExecutableSchema } from 'graphql-tools'
 const baseSchema = () => [ `
   scalar JSON
   scalar DateTime
@@ -10,8 +11,12 @@ const baseSchema = () => [ `
     mutation: Mutation, }
 `]
 
-export default [
+const typeDefs = [
   baseSchema,
   Mutations,
   Queries,
 ]
+
+const schema = makeExecutableSchema({ typeDefs, resolvers })
+
+export default schema
