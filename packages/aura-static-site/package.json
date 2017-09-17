@@ -1,5 +1,27 @@
 {
+  "name": "aura-static-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/grandathepanda/aura-static-site.git",
   "author": "cd10012",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-react-native": "^1.9.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "dotenv-webpack": "^1.5.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "image-loader": "^0.0.1",
+    "image-webpack-loader": "^3.3.1",
+    "react-scripts": "0.8.5",
+    "sass-resources-loader": "^1.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^3.5.4"
+  },
   "dependencies": {
     "apollo-client": "^0.8.1",
     "classnames": "^2.2.5",
@@ -39,38 +61,15 @@
     "thunk": "^0.0.1",
     "thunks": "^4.7.5"
   },
-  "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-core": "^6.22.1",
-    "babel-loader": "^7.1.1",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babel-preset-react-native": "^1.9.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "dotenv-webpack": "^1.5.4",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "image-loader": "^0.0.1",
-    "image-webpack-loader": "^3.3.1",
-    "react-scripts": "0.8.5",
-    "sass-resources-loader": "^1.2.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^3.5.4"
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "aura-static-site",
-  "private": true,
-  "repository": "https://github.com/grandathepanda/aura-static-site.git",
   "scripts": {
-    "build": "npm run build-css && react-scripts build",
     "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "deploy-dev": "NODE_ENV=development yarn build && aws s3 sync build s3://pibrain.homepage.dev",
     "deploy-prod": "NODE_ENV=production yarn build && aws s3 sync build s3://pibrain.io",
-    "eject": "react-scripts eject",
-    "start": "npm-run-all -p watch-css start-js",
-    "start-js": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
-  },
-  "version": "0.0.1-0"
+    "eject": "react-scripts eject"
+  }
 }

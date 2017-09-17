@@ -25,9 +25,13 @@
 
       .team-wrapper {
         width: calc(33% - 60px);
-        padding:  30px;
+        margin:  30px;
         float:left;
         padding-top: 0;
+        overflow:hidden;
+        height: 500px;
+        min-height: 65vh;
+
 
         .expand-c {
           height: 100%;
@@ -76,10 +80,8 @@
 
 
         .team-c {
-          width: 100%;
-          height: 100%;
           background-size: cover;
-          height: 400px;
+          height: 425px;
           cursor:pointer;
           transition: all 0.5s cubic-bezier(.36,.33,.18,.95);
           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);

@@ -28,6 +28,36 @@ var isMobile = {
     }
 };
 
+function Desktop(props) {
+  return(
+      <div>
+        <About />
+        <Contact />
+      </div>
+  );
+}
+
+function HomepageCont(props) {
+
+  const isMobile = props.isMobile;
+  let button = null;
+
+  if (!isMobile) {
+    button = <Desktop isMobile={isMobile} />
+
+  }
+
+  else {
+    button = null;
+  }
+
+  return (
+    <div>
+      {button}
+    </div>
+  );
+}
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -46,6 +76,7 @@ export default class Home extends Component {
   }
 
   render(props) {
+
     return (
       <div>
         <Particles className="particle-canvas" width={'100%'} height={'100%'} params={{
@@ -105,20 +136,13 @@ export default class Home extends Component {
           }
         }
       }} />
-          
           <SidebarMenu handleLogin={this.handleLogin} active={this.props.sidebar_active} />
           <div className={this.props.sidebar_active ? 'aura-container pushed' : 'aura-container' }>
           <p className="wc-title">Sign up for Aura platform updates!</p>
           <Hero />
           </div>
         </div>
-
-        if ( this.state.isMobile == false ) {
-        <div>
-        <About />
-        <Contact />
-        </div>
-      }
+        <HomepageCont isMobile={this.state.isMobile } />
       </div>
     );
   }
