@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Automation.scss';
-import CSSModules from 'react-css-modules';
+import './Automation.css';
 
-class Automation extends Component {
+export default class Automation extends Component {
 	render(props) {
 		return (
       <div>
@@ -22,4 +21,3 @@ class Automation extends Component {
 		);
 	}
 }
-export default CSSModules(Automation, styles);

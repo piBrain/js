@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Automations.scss';
-import CSSModules from 'react-css-modules';
+import './Automations.css';
 import Automation from '../Automation/Automation.jsx';
 import {TransitionMotion, StaggeredMotion, spring} from 'react-motion';
 import Transition from 'react-motion-ui-pack';
 
-class Automations extends Component {
+export default class Automations extends Component {
 
   constructor(props) {
     super(props);
@@ -62,4 +61,3 @@ class Automations extends Component {
   );
   }
 }
-export default CSSModules(Automations, styles);

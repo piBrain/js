@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Dropdown.scss';
-import CSSModules from 'react-css-modules';
+import './Dropdown.css';
 
-class Dropdown extends Component {
+export default class Dropdown extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -37,4 +36,3 @@ class Dropdown extends Component {
 		);
 	}
 }
-export default CSSModules(Dropdown, styles);

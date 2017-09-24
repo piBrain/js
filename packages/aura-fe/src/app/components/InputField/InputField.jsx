@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './InputField.scss';
-import CSSModules from 'react-css-modules';
+import './InputField.css';
 
-class InputField extends Component {
+export default class InputField extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -12,13 +11,14 @@ class InputField extends Component {
 			errorMessag: "This text is invalid",
 			errorVisible: false
 		};
+    this.handleChanges = this.handleChanges.bind(this)
 	}
 
 	handleChanges( event ) {
 		this.validate( event.target.value );
 
 		if ( this.props.onChange ) {
-			this.props.OnChange( event );
+			this.props.onChange( event );
 		}
 
 	}
@@ -97,5 +97,4 @@ class InputField extends Component {
 		);
 	}
 }
-export default CSSModules(InputField, styles)
 

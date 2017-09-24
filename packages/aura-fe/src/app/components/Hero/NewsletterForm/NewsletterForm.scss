@@ -1,5 +1,6 @@
-input {
+input, button {
   width: 50%;
+  margin: 8px;
   padding: 12px 20px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -10,13 +11,13 @@ input {
   outline: none;
 }
 
-input[type=submit] {
+button[type=submit] {
   background:#74b1e6;
   border: none;
   cursor:pointer;
 }
 
-input[type=submit]:hover {
+button[type=submit]:hover {
   background: #222;
   color: white;
 }
@@ -29,4 +30,29 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
   width: 100%;
   margin: 50px 0 auto; position: relative;
   left: 25%;
+}
+
+.newsletter-display {
+  overflow: hidden;
+  width: 100%;
+  margin: 50px 0 auto;
+}
+
+.newsletterSubmitResponse {
+  width: 50%;
+  margin: 8px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 3px solid #d8d6e2;
+  -webkit-transition: 0.5s;
+  font: 12px 'PT Mono', monospace;
+  transition: 0.5s;
+  outline: none;
+  position: relative;
+  display: block;
+  margin-top: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);ext-align: center;
 }

@@ -5,6 +5,7 @@ $new-blue: #98c5ec;
 	position: absolute;
 	overflow:hidden;
   min-width: 440px;
+  display:none;
 	background: white;
 	left: -$profile-width;
 	z-index: 90;

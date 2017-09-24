@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './SideHeader.scss';
+import './SideHeader.css';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import CSSModules from 'react-css-modules';
 
-class SideHeader extends Component {
+export default class SideHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,4 +25,3 @@ class SideHeader extends Component {
     );
   }
 }
-export default CSSModules(SideHeader, styles);

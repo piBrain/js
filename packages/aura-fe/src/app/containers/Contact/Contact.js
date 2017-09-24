@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu.jsx';
-import styles from './Contact.scss';
-import CSSModules from 'react-css-modules';
+import './Contact.css';
 import Particles from 'react-particles-js';
 
-class Contact extends Component {
+export default class Contact extends Component {
 
   constructor(props) {
     super(props);
@@ -17,24 +16,24 @@ class Contact extends Component {
     var mockBackend = [
       {
         "key": 0,
-        "photo": "../../../assets/itb.jpg",
+        "photo": "../../../assets/ian.jpg",
         "name": "IAN BUTLER",
         "title": "CEO & FOUNDER",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut scelerisque ex. Nam quis viverra mi. Integer vel mauris interdum, dignissim est non, condimentum libero. Maecenas gravida non lectus ac varius. Nulla sagittis sodales ante ac suscipit. Maecenas sodales interdum erat at fermentum. Nunc a sagittis nisi. Proin non diam ultricies, hendrerit tellus quis, facilisis sem. Cras ac tortor velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce tempor diam id tempor lobortis. Nunc tincidunt dolor in orci sollicitudin viverra. Mauris et arcu ornare, pulvinar mi a, auctor lectus. Donec condimentum leo ligula, finibus convallis quam varius quis. Duis vitae efficitur ligula."
+        "description": "After not finding what he was looking for in his home town or in college at NYU Ian was a bit lost. Always flirting with entrepreneurship Ian submitted one of his ideas to an accelerator to see what would happen. He made it to the final rounds and that sparked something in him. Fast forward a little while later Ian met with his two co-founders and piBrain and Aura were born."
       },
       {
         "key": 1,
-        "photo": "../../../assets/itb.jpg",
+        "photo": "../../../assets/cory.jpg",
         "name": "CORY DICKSON",
         "title": "CPO & FOUNDER",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut scelerisque ex. Nam quis viverra mi. Integer vel mauris interdum, dignissim est non, condimentum libero. Maecenas gravida non lectus ac varius. Nulla sagittis sodales ante ac suscipit. Maecenas sodales interdum erat at fermentum. Nunc a sagittis nisi. Proin non diam ultricies, hendrerit tellus quis, facilisis sem. Cras ac tortor velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce tempor diam id tempor lobortis. Nunc tincidunt dolor in orci sollicitudin viverra. Mauris et arcu ornare, pulvinar mi a, auctor lectus. Donec condimentum leo ligula, finibus convallis quam varius quis. Duis vitae efficitur ligula."
+        "description": "Starting as a Web Developer at Pentagram Design, Cory launched his career as a front-end developer. Wanting to do more with his new found design skills, he decided that he was ready to build a product in an emerging field such as AI."
       },
       {
         "key": 2,
-        "photo": "../../../assets/wam.jpg",
+        "photo": "../../../assets/watson.jpg",
         "name": "WATSON MARKSON",
         "title": "CTO & FOUNDER",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut scelerisque ex. Nam quis viverra mi. Integer vel mauris interdum, dignissim est non, condimentum libero. Maecenas gravida non lectus ac varius. Nulla sagittis sodales ante ac suscipit. Maecenas sodales interdum erat at fermentum. Nunc a sagittis nisi. Proin non diam ultricies, hendrerit tellus quis, facilisis sem. Cras ac tortor velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce tempor diam id tempor lobortis. Nunc tincidunt dolor in orci sollicitudin viverra. Mauris et arcu ornare, pulvinar mi a, auctor lectus. Donec condimentum leo ligula, finibus convallis quam varius quis. Duis vitae efficitur ligula."
+        "description": "Before co-founding piBriain, Watson was studying Mathematics at NYU's Polytechnic Institute, pursuing a lifelong passion for abstraction. After the various dramatic deep learning expositions of 2014/15, Watson was enticed away from further academic studies to explore the exciting space of applications made accessible through modern machine learning techniques."
       }
     ];
 
@@ -50,15 +49,16 @@ class Contact extends Component {
         });
       },
       render: function () {
-        var ian = require("../../../assets/itb.jpg");
-        // var cory = require("../../../assets/");
-        var watson = require("../../../assets/wam.jpg");
+        var ian = require("../../../assets/ian.jpg");
+        var cory = require("../../../assets/cory.jpg");
+        var watson = require("../../../assets/watson.jpg");
         var divStyles= [
           {
             backgroundImage: 'url(' + ian + ')',
           },
           {
-            backgroundImage: 'url(' + ian + ')',
+            backgroundImage: 'url(' + cory + ')',
+            backgroundPosition: '35%',
           },
           {
             backgroundImage: 'url(' + watson + ')',
@@ -90,11 +90,7 @@ class Contact extends Component {
         return (
           <div className="team-container">
             <div className="row">
-              {members[0]}
-              {members[1]}
-            </div>
-            <div className="row">
-              {members[2]}
+              {members}
             </div>
           </div>
         );
@@ -102,35 +98,7 @@ class Contact extends Component {
     });
 
     return (
-      <div id="contact" className="page-container">
-        <Particles className="particle-canvas" width={'100%'} height={'125vh'} params={{
-          particles: {
-            number: {
-              value: 125,
-              enable: true,
-              value_area:800
-            },
-            color: {
-              value: '#000000'
-            },
-            opacity: {
-                value: 1
-            },
-            shape: {
-              polygon: {
-                nb_sides: 12
-              }
-            },
-            line_linked: {
-              enable: true,
-              color: "#000000",
-            },
-            move: {
-              enable: true,
-              speed: 1.3
-            }
-          }
-        }} />
+      <div id="contact">
         <div className="page-header">
           <p>Meet the Team</p>
         </div>
@@ -159,4 +127,3 @@ class Contact extends Component {
   }
 }
 
-export default CSSModules( Contact, styles )

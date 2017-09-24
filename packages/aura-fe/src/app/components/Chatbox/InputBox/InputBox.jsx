@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './InputBox.scss';
+import './InputBox.css';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import CSSModules from 'react-css-modules';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class InputBox extends Component {
+export default class InputBox extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -47,4 +46,3 @@ class InputBox extends Component {
     );
   }
 }
-export default CSSModules(InputBox, styles);

@@ -1,0 +1,33 @@
+.side-container {
+  position: absolute;
+  overflow: hidden;
+  min-width: 440px;
+  display: none;
+  background: white;
+  left: -30vw;
+  z-index: 90;
+  width: 30vw;
+  height: 100vh;
+  -webkit-box-shadow: 5px -5px 39px -14px black;
+  -moz-box-shadow: 5px -5px 39px -14px black;
+  box-shadow: 5px -5px 39px -14px black;
+  transition: transform 600ms;
+  transition-timing-function: cubic-bezier(0.56, 0.97, 0.94, 0.99); }
+  .side-container.active {
+    transform: translateX(30vw); }
+  .side-container .footer-links {
+    text-align: center;
+    font: 12px 'PT Mono', monpspace;
+    position: relative;
+    top: 3.9%; }
+    .side-container .footer-links.adjust {
+      top: 45%; }
+    .side-container .footer-links span {
+      cursor: pointer; }
+
+.header-fade-appear {
+  opacity: 0.01; }
+
+.header-fade-appear.header-fade-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in; }

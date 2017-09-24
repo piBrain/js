@@ -1,0 +1,33 @@
+.automation-command {
+  width: 100%;
+  height: auto;
+  background: white;
+  float: left;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px outset #f7f5f3;
+  box-shadow: inset -1px 0px 6px 0px #d8d6e2;
+  transition: all 400ms; }
+  .automation-command .title {
+    width: 50%;
+    float: left;
+    padding: 10px;
+    margin: 0 auto;
+    font: 12px 'PT Mono', monospace;
+    color: #716b6b; }
+  .automation-command .controls {
+    float: right;
+    overflow: hidden;
+    padding: 0 5px; }
+    .automation-command .controls img {
+      width: 15px;
+      height: 15px;
+      float: left;
+      margin: 10px 6px;
+      cursor: pointer; }
+
+.expanded-menu.hide {
+  display: none; }
+
+.expanded-menu.active {
+  display: block; }

@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Profile.scss';
+import './Profile.css';
 import Automations from '../Automations/Automations.jsx';
-import CSSModules from 'react-css-modules';
 
-class Profile extends Component {
+export default class Profile extends Component {
   render(props) {
     var automation_data = [
       {name:'name one', key:'000', interval: 'day', time: '9:00' },
@@ -37,4 +36,3 @@ class Profile extends Component {
     );
   }
 }
-export default CSSModules(Profile, styles);

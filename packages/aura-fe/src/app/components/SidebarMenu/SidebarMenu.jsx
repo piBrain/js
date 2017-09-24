@@ -1,14 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './SidebarMenu.scss';
+import './SidebarMenu.css';
 import Profile from '../Profile/Profile.jsx';
 import Login from '../Login/Login.jsx';
-import Signup from '../Signup/Signup.jsx';
+import SignUp from '../SignUp/SignUp.jsx';
 import SideHeader from '../SideHeader/SideHeader.jsx';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import CSSModules from 'react-css-modules';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class SidebarMenu extends Component {
+export default class SidebarMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +34,7 @@ class SidebarMenu extends Component {
 
     else {
       console.log(bool);
-      this.setState( {toggleLogin: bool } );
+      this.setState( { toggleLogin: bool } );
     }
 
   }
@@ -49,7 +48,7 @@ class SidebarMenu extends Component {
       </div>
       <SideHeader active={(this.state.profile_active == false)} active={this.state.toggleLogin} toggleLogin={this.toggleLogin} animate={true} />
       <Login active={(this.state.toggleLogin && this.state.profile_active == false )} />
-      <Signup active={(!this.state.toggleLogin && this.state.profile_active == false)} />
+      <SignUp active={(!this.state.toggleLogin && this.state.profile_active == false)} />
       <p className={this.state.toggleLogin ? "footer-links adjust" : "footer-links"}>
       <span className="link">Privacy</span> / <span className="link">Terms</span> / piBrain © {new Date().getFullYear()}
       </p>
@@ -57,4 +56,3 @@ class SidebarMenu extends Component {
     );
   }
 }
-export default CSSModules(SidebarMenu, styles);

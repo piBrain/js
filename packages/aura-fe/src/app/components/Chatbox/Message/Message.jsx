@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Message.scss';
+import './Message.css';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import CSSModules from 'react-css-modules';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class Message extends Component {
+export default class Message extends Component {
   render(props) {
     return (
       <div className="message-container">
@@ -14,4 +13,3 @@ class Message extends Component {
     );
   }
 }
-export default CSSModules(Message, styles);

@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Chatbox.scss';
+import './Chatbox.css';
 import MessageList from './MessageList/MessageList.jsx';
 import InputBox from './InputBox/InputBox.jsx';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
-import CSSModules from 'react-css-modules';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class Chatbox extends Component {
+export default class Chatbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +20,7 @@ class Chatbox extends Component {
 
   handleMessageSubmit (e) {
     //redux
-    data.push(e);
+    // data.push(e);
   }
 
   render(props) {
@@ -33,5 +32,4 @@ class Chatbox extends Component {
     );
   }
 }
-export default CSSModules(Chatbox, styles);
 

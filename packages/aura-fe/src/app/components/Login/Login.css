@@ -1,0 +1,41 @@
+#login {
+  position: relative;
+  top: 13%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto; }
+  #login .forgot-password {
+    font-family: "PT Mono", monospace;
+    font-size: 12px;
+    margin: 20px 50px;
+    color: #222; }
+    #login .forgot-password span {
+      border-bottom: 1px solid #222;
+      padding-bottom: 2px;
+      cursor: pointer; }
+  #login input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 50px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 3px solid #d8d6e2;
+    -webkit-transition: 0.5s;
+    font: 12px 'PT Mono', monospace;
+    transition: 0.5s;
+    outline: none; }
+  #login input[type=submit] {
+    background: rgba(220, 220, 220, 0.27);
+    border: none;
+    cursor: pointer; }
+  #login input[type=submit]:hover {
+    background: #222;
+    color: white; }
+  #login input[type=email]:focus, #login input[type=password]:focus {
+    border: 3px solid #555; }
+
+.login-container {
+  overflow: hidden;
+  display: none; }
+  .login-container.active {
+    display: block; }

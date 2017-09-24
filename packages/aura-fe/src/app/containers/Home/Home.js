@@ -1,30 +1,70 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx';
+import About from '../../containers/About/About.js'
+import Contact from '../../containers/Contact/Contact.js'
 import Hero from '../../components/Hero/Hero.jsx';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu.jsx';
 import Chatbox from '../../components/Chatbox/Chatbox.jsx';
-import styles from './Home.scss';
-import CSSModules from 'react-css-modules';
+import './Home.css';
 import Particles from 'react-particles-js';
-var data = [
-    {
-        "id": 1388534400000,
-        "author": "Pete Hunt",
-        "text": "Hey there!"
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
     },
-    {
-        "id": 1420070400000,
-        "author": "Paul O’Shannessy",
-        "text": "React is *great*!"
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
     },
-]
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
 
-class Home extends Component {
+function Desktop(props) {
+  return(
+      <div>
+        <About />
+        <Contact />
+      </div>
+  );
+}
+
+function HomepageCont(props) {
+
+  const isMobile = props.isMobile;
+  let button = null;
+
+  if (!isMobile) {
+    button = <Desktop isMobile={isMobile} />
+
+  }
+
+  else {
+    button = null;
+  }
+
+  return (
+    <div>
+      {button}
+    </div>
+  );
+}
+
+export default class Home extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      isMobile: isMobile.any()
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -36,17 +76,14 @@ class Home extends Component {
   }
 
   render(props) {
+
     return (
       <div>
-        <div className='app-container'>
-          <SidebarMenu handleLogin={this.handleLogin} active={this.props.sidebar_active} />
-          <div className={this.props.sidebar_active ? 'aura-container pushed' : 'aura-container' }>
-          <p className="wc-title">Welcome to Aura</p>
-          <Particles className="particle-canvas" width={'100%'} height={'125vh'} params={{
+        <Particles className="particle-canvas" width={'100%'} height={'100%'} params={{
         particles: {
           number: {
-            value: 400,
-            enable: false,
+            value: 200,
+            enable: true,
             value_area:800
           },
           color: {
@@ -66,18 +103,48 @@ class Home extends Component {
           },
           move: {
             enable: true,
-              speed: 1.3,
-              direction: 'top-right',
-              mode: 'out'
+            speed: 1.3
           }
         }
       }} />
-<Hero data={data} />
+    <div className='app-container'>
+      <Particles className="particle-canvas" width={'100%'} height={'125vh'} params={{
+        particles: {
+          number: {
+            value: 125,
+            enable: true,
+            value_area:800
+          },
+          color: {
+            value: '#000000'
+          },
+          opacity: {
+              value: 1
+          },
+          shape: {
+            polygon: {
+              nb_sides: 12
+            }
+          },
+          line_linked: {
+            enable: true,
+            color: "#000000",
+          },
+          move: {
+            enable: true,
+            speed: 1.3
+          }
+        }
+      }} />
+          <SidebarMenu handleLogin={this.handleLogin} active={this.props.sidebar_active} />
+          <div className={this.props.sidebar_active ? 'aura-container pushed' : 'aura-container' }>
+          <p className="wc-title">Sign up for Aura platform updates!</p>
+          <Hero />
           </div>
         </div>
+        <HomepageCont isMobile={this.state.isMobile } />
       </div>
     );
   }
 }
 
-export default CSSModules( Home, styles )

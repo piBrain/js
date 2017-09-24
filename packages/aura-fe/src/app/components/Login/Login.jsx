@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './Login.scss';
+import './Login.css';
 import InputField from '../InputField/InputField.jsx';
-import CSSModules from 'react-css-modules';
 
-class Login extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { email:"", password: "" };
@@ -79,4 +78,3 @@ class Login extends Component {
     );
   }
 }
-export default CSSModules(Login, styles);

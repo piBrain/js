@@ -9,6 +9,9 @@
   }
 }
 #about {
+  overflow:hidden;
+  height: 100%;
+  position: relative;
   p { color: #222; }
   canvas {
     position:absolute;
@@ -48,7 +51,7 @@
 
       iframe {
         width: 40%;
-        height: 350px;
+        height: 500px;
       }
     }
   }

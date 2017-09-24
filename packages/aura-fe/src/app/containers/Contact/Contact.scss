@@ -1,5 +1,8 @@
 #contact {
   margin: 0 auto;
+  height: 100%;
+  margin-top: 150px;
+  position: relative;
   canvas {
     position: absolute;
   }
@@ -21,15 +24,21 @@
       overflow:hidden;
 
       .team-wrapper {
-        width: 500px;
-        padding:  40px 80px;
+        width: calc(33% - 60px);
+        margin:  30px;
         float:left;
         padding-top: 0;
+        overflow:hidden;
+        height: 500px;
+        min-height: 65vh;
+
 
         .expand-c {
           height: 100%;
           width: 0px;
+          width: 100%;
           opacity: 0;
+          transform: rotate(-90deg);
           background: white;
           z-index: 1000;
           transition: all 0.5s cubic-bezier(.36,.33,.18,.95);
@@ -59,8 +68,8 @@
           span { width: 100%; float: left; }
 
           .name {
-              color: #555;
-              font: 1.65em 'Oxygen', monospace;
+            color: #555;
+            font: 1.65em 'Oxygen', monospace;
           }
 
           .title {
@@ -69,20 +78,17 @@
           }
         }
 
-        &.bottom {
-          float: none;
-          margin: 0 auto;
-        }
 
         .team-c {
-          width: 100%;
-          height: 100%;
           background-size: cover;
-          height: 700px;
+          height: 425px;
           cursor:pointer;
           transition: all 0.5s cubic-bezier(.36,.33,.18,.95);
           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          filter: grayscale(100%);
+          transform: rotate(90deg);
         }
+
       }
     }
   }

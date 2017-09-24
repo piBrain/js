@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import styles from './FAQ.scss';
-import CSSModules from 'react-css-modules';
+import './FAQ.css';
 import Particles from 'react-particles-js';
 
-class FAQ extends Component {
+export default class FAQ extends Component {
 
   constructor(props) {
     super(props);
@@ -145,4 +144,3 @@ class FAQ extends Component {
   }
 }
 
-export default CSSModules( FAQ, styles )
