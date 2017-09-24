@@ -16,21 +16,21 @@ export default class Contact extends Component {
     var mockBackend = [
       {
         "key": 0,
-        "photo": "../../../assets/ian.jpg",
+        "photo": "../../../assets/ian.JPG",
         "name": "IAN BUTLER",
         "title": "CEO & FOUNDER",
         "description": "After not finding what he was looking for in his home town or in college at NYU Ian was a bit lost. Always flirting with entrepreneurship Ian submitted one of his ideas to an accelerator to see what would happen. He made it to the final rounds and that sparked something in him. Fast forward a little while later Ian met with his two co-founders and piBrain and Aura were born."
       },
       {
         "key": 1,
-        "photo": "../../../assets/cory.jpg",
+        "photo": "../../../assets/cory.JPG",
         "name": "CORY DICKSON",
         "title": "CPO & FOUNDER",
         "description": "Starting as a Web Developer at Pentagram Design, Cory launched his career as a front-end developer. Wanting to do more with his new found design skills, he decided that he was ready to build a product in an emerging field such as AI."
       },
       {
         "key": 2,
-        "photo": "../../../assets/watson.jpg",
+        "photo": "../../../assets/watson.JPG",
         "name": "WATSON MARKSON",
         "title": "CTO & FOUNDER",
         "description": "Before co-founding piBriain, Watson was studying Mathematics at NYU's Polytechnic Institute, pursuing a lifelong passion for abstraction. After the various dramatic deep learning expositions of 2014/15, Watson was enticed away from further academic studies to explore the exciting space of applications made accessible through modern machine learning techniques."
@@ -49,9 +49,9 @@ export default class Contact extends Component {
         });
       },
       render: function () {
-        var ian = require("../../../assets/ian.jpg");
-        var cory = require("../../../assets/cory.jpg");
-        var watson = require("../../../assets/watson.jpg");
+        var ian = require("../../../assets/ian.JPG");
+        var cory = require("../../../assets/cory.JPG");
+        var watson = require("../../../assets/watson.JPG");
         var divStyles= [
           {
             backgroundImage: 'url(' + ian + ')',

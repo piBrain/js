@@ -9,7 +9,6 @@
   }
 }
 #about {
-  overflow:hidden;
   height: 100%;
   position: relative;
   p { color: #222; }
@@ -50,7 +49,7 @@
       p { text-align: center; font: bold 36px 'PT Mono', sans-serif; }
 
       iframe {
-        width: 40%;
+        width: 75%;
         height: 500px;
       }
     }

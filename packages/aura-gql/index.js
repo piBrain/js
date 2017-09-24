@@ -26,7 +26,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 class AuraGqlClient extends _apolloClient2.default {
   constructor({ options, schema, uri }) {
-    (0, _expect2.default)(schema || uri, 'AuraGqlClient requires either a uri or grqphql schema');
+    if (!schema && !uri) {
+      throw 'AuraGqlClient requires either a uri or grqphql schema';
+    }
     const isLocalClient = schema && !uri;
     let networkInterface;
 

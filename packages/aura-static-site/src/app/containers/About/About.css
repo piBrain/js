@@ -7,7 +7,6 @@
     transform: translateX(30vw); }
 
 #about {
-  overflow: hidden;
   height: 100%;
   position: relative; }
   #about p {
@@ -46,5 +45,5 @@
         text-align: center;
         font: bold 36px 'PT Mono', sans-serif; }
       #about .content-container .center-container iframe {
-        width: 40%;
+        width: 75%;
         height: 500px; }
