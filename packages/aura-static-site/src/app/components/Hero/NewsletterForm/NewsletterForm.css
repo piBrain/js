@@ -28,6 +28,11 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
   margin: 50px 0 auto;
   position: relative;
   left: 25%; }
+  .newsletter-form span {
+    font: 12px 'PT Mono', monospace;
+    display: block;
+    margin: 12px;
+    color: #cc0000; }
 
 .newsletter-display {
   overflow: hidden;
