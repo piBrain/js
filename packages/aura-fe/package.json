@@ -1,8 +1,8 @@
 {
-  "name": "aura-static-site",
+  "name": "aura-fe",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/grandathepanda/aura-static-site.git",
+  "repository": "https://github.com/piBrain/js/packages/aura-gql",
   "author": "cd10012",
   "license": "MIT",
   "devDependencies": {
