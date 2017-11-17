@@ -10,6 +10,7 @@ var db        = {};
 if (config.url) {
   var sequelize = new Sequelize(config.url, config);
 } else {
+  console.log(config.username)
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
