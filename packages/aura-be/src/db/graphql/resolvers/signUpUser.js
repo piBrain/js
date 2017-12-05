@@ -36,7 +36,8 @@ const executeSignUpUser = async (args) => {
     await user.save()
     const url = args.url + `?verify=${nonce}`
     const email = {
-      email: args.email,
+      from: 'aura@pibrain.io',
+      to: args.email,
       subject: 'Verify Aura User Account',
       content: `Please click <a href=${url}>here</a> to verify your account and finish signing up. <br />Or copy and paste: ${args.url} into your address bar on your browser.<br/>If you did not sign-up for please contact us at aura+support@pibrain.io`,
       type: 'auraUserSignUpConfirmation',
