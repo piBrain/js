@@ -11,8 +11,10 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.ENUM('OWNER', 'ADMIN', 'MEMBER', 'GUEST'),
   }, { underscored: true });
   UserTeam.associate = (models) => {
-    UserTeam.hasMany(models.Message, { as: 'response', foreignKey: 'user_team_id', sourceKey: 'tag', scope: 'RESPONSE' })
-    UserTeam.hasMany(models.Message, { as: 'request', foreignKey: 'user_team_id', sourceKey: 'tag', scope: 'REQUEST'  })
+    UserTeam.hasMany(models.Message, { as: 'responses', foreignKey: 'user_team_id', sourceKey: 'tag', scope: {type: 'RESPONSE'}})
+    UserTeam.hasMany(models.Message, { as: 'requests', foreignKey: 'user_team_id', sourceKey: 'tag', scope: {type: 'REQUEST'}})
+    UserTeam.hasOne(models.Team, {foreignKey: 'id', sourceKey: 'team_id'})
+    UserTeam.belongsTo(models.User, {foreignKey: 'user_id', sourceKey: 'id'})
   }
   return UserTeam;
 };

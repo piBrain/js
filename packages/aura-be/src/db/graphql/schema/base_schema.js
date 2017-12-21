@@ -1,20 +1,25 @@
 import Mutations from './mutations'
 import Queries from './queries'
+import Subscriptions from './subscriptions'
 import resolvers from '../resolvers/combinedResolvers'
 import { makeExecutableSchema } from 'graphql-tools'
 const baseSchema = () => [ `
   scalar JSON
   scalar DateTime
+  scalar Date
 
   schema {
     query: Query,
-    mutation: Mutation, }
+    mutation: Mutation,
+    subscription: Subscription,
+    }
 `]
 
 const typeDefs = [
   baseSchema,
   Mutations,
   Queries,
+  Subscriptions
 ]
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })

@@ -59,11 +59,10 @@ module.exports = function(sequelize, DataTypes) {
     },
   }
 
-  const hashPassword = (user, options) => {
+  const hashPassword = async (user, options) => {
     if (!user.changed('password')) { return };
-    return argon2.hash(user.password, { type: argon2.argon2i }).then((hash) => {
-      user.setDataValue('password', hash)
-    })
+    const hash = await argon2.hash(user.password, { type: argon2.argon2i })
+    user.setDataValue('password', hash)
   }
 
   const options = {
@@ -77,6 +76,13 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', attributes, options);
   User.associate = (models) => {
     User.belongsToMany(models.Team, { through: models.UserTeam })
+  }
+
+  User.prototype.verifyPassword = async function(suppliedPassword) {
+    if(await argon2.verify(this.password, suppliedPassword)) {
+      return true
+    }
+    return false
   }
   return User;
 };
