@@ -9,12 +9,17 @@ const executeGetMessages = async ({ nonce, timeStamp, teamFilter}) => {
     if(!user) { return { err: true, response: 'Whoops! Something went wrong.', data: {} } }
     let teams = await user.getTeams()
     if(!teams) { return { err: false, response: 'No teams.', data: { messages: [] } } }
-    const team = teams.filter((team) => (team.name == teamFilter.name))[0]
-    const userTeams = [team.UserTeam]
+    var userTeams = []
+    if(teamFilter) {
+      const team = teams.filter((team) => (team.name == teamFilter.name))[0]
+      userTeams = [team.UserTeam]
+    } else {
+      userTeams = teams.map((team) => (team.UserTeam))
+    }
     let limit = new Date(timeStamp)
     limit.setHours(limit.getHours()-24)
     limit = limit.toISOString()
-    const messages = await db.Message.findAll({
+    var messages = await db.Message.findAll({
       where: { userTeamId: userTeams.map((ut) => ut.tag), created_at: { gte: limit } },
       include: [
         {
@@ -28,6 +33,23 @@ const executeGetMessages = async ({ nonce, timeStamp, teamFilter}) => {
         }
       ]
     }) || []
+    if(messages.length == 0) {
+      messages = await db.Message.findAll({
+        where: { userTeamId: userTeams.map((ut) => ut.tag) },
+        include: [
+          {
+            model: db.UserTeam,
+            required: true,
+            attributes: ['team_id', 'user_id'],
+            include: [
+              {model: db.Team, attributes: ['name']},
+              {model: db.User, attributes: ['firstName', 'lastName']}
+            ]
+          }
+        ],
+        limit: 25
+      }) || []
+    }
     const formattedMessages = messages.map((msg) => {
       return {
         message: msg.text,
