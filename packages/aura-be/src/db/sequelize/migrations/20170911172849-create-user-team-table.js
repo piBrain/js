@@ -6,8 +6,8 @@ module.exports = {
       tag: { type: Sequelize.UUID, allowNull: false, defaultValue: Sequelize.UUIDV4, unique: true},
       active: { type: Sequelize.BOOLEAN, defaultValue: false },
       activationNonce: { type: Sequelize.STRING, unique: true },
-      user_id: { type: Sequelize.INTEGER },
-      team_id: { type: Sequelize.INTEGER },
+      UserId: { type: Sequelize.INTEGER },
+      TeamId: { type: Sequelize.INTEGER },
       type: { type: Sequelize.ENUM, values: ['OWNER', 'ADMIN', 'MEMBER', 'GUEST'], allowNull: false },
       created_at: { allowNull: false, type: Sequelize.DATE },
       updated_at: { allowNull: false, type: Sequelize.DATE }

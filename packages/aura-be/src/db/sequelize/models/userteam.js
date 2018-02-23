@@ -6,15 +6,16 @@ module.exports = function(sequelize, DataTypes) {
     tag: { type: DataTypes.UUID, allowNull: false, unique: true},
     active: { type: DataTypes.BOOLEAN, defaultValue: false },
     activationNonce: { type: DataTypes.STRING },
-    userId: { type: DataTypes.INTEGER, field: 'user_id' },
-    teamId: { type: DataTypes.INTEGER, field: 'team_id' },
+    UserId: { type: DataTypes.INTEGER, },
+    TeamId: { type: DataTypes.INTEGER, },
     type: DataTypes.ENUM('OWNER', 'ADMIN', 'MEMBER', 'GUEST'),
-  }, { underscored: true });
+  },);
   UserTeam.associate = (models) => {
-    UserTeam.hasMany(models.Message, { as: 'responses', foreignKey: 'user_team_id', sourceKey: 'tag', scope: {type: 'RESPONSE'}})
-    UserTeam.hasMany(models.Message, { as: 'requests', foreignKey: 'user_team_id', sourceKey: 'tag', scope: {type: 'REQUEST'}})
-    UserTeam.hasOne(models.Team, {foreignKey: 'id', sourceKey: 'team_id'})
-    UserTeam.belongsTo(models.User, {foreignKey: 'user_id', sourceKey: 'id'})
+    UserTeam.hasMany(models.Message, { as: 'responses', foreignKey: 'userTeamId', sourceKey: 'tag', scope: {type: 'RESPONSE'}})
+    UserTeam.hasMany(models.Message, { as: 'requests', foreignKey: 'userTeamId', sourceKey: 'tag', scope: {type: 'REQUEST'}})
+    UserTeam.hasMany(models.Message, { as: 'files', foreignKey: 'userTeamId', sourceKey: 'tag', scope: {type: 'FILE'}})
+    UserTeam.hasOne(models.Team, {foreignKey: 'id', sourceKey: 'TeamId'})
+    UserTeam.belongsTo(models.User, {foreignKey: 'UserId', sourceKey: 'id'})
   }
   return UserTeam;
 };

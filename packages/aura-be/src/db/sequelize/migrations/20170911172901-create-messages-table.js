@@ -22,15 +22,15 @@ module.exports = {
         type: Sequelize.JSONB,
         allowNull: true,
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      user_team_id: {
+      userTeamId: {
         type: Sequelize.UUID,
         allowNull: false,
         references: { model: 'UserTeams', key: 'tag' }

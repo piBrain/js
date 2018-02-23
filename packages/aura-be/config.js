@@ -1,3 +1,5 @@
+import fs from 'fs'
+const configsFromFile = JSON.parse(fs.readFileSync('.configs', 'utf-8'))
 const configs = {
   local: {
     DATABASE_URL: 'postgres://127.0.0.1:5432/aura_be_local',
@@ -14,6 +16,13 @@ const configs = {
     TWILIO_ACCOUNT_SID: 'ACf6ed1d4c46b1d094ca9c827fb38f28e2',
     TWILIO_PHONE_NUMBER: '+12083141596',
   },
+  test: {
+    DATABASE_URL: 'postgres://localhost/aura_test',
+    TWILIO_AUTH_TOKEN: 'EXAMPLE',
+    TWILIO_ACCOUNT_SID: 'ACf6ed1d4c46b1d094ca9c827fb38f28e2',
+    TWILIO_PHONE_NUMBER: 'EXAMPLE',
+    LISTEN_PORT: "7327"
+  }
 }
 
 const NODE_ENV = process.env.NODE_ENV || 'local'

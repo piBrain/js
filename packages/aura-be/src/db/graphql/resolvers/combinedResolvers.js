@@ -1,38 +1,38 @@
 import { merge  } from 'lodash'
-import signUpUser from './signUpUser'
-import newsletterSignUp from './newsletterSignUp'
-import verifyUserEmail from './verifyUserEmail'
-import verifyNewsletterEmail from './verifyNewsletterEmail'
-import getSecurityQuestions from './getSecurityQuestions'
+import Apis from './Apis'
+import confirmAddTeamMember from './confirmAddTeamMember'
+import createTeam from './createTeam'
+import deactivateTeam from './deactivateTeam'
 import forgotPassword from './forgotPassword'
+import Messages from './Messages'
+import Teams from './Teams'
+import newsletterSignUp from './newsletterSignUp'
+import promoteMemberToAdmin from './promoteMemberToAdmin'
+import reactivateTeam from './reactivateTeam'
+import requestAddTeamMember from './requestAddTeamMember'
 import resetPassword from './resetPassword'
 import returnProfileInfo from './returnProfileInfo'
-import updateProfileInfo from './updateProfileInfo'
-import createTeam from './createTeam'
-import getTeams from './getTeams'
-import getMessages from './getMessages'
-import promoteMemberToAdmin from './promoteMemberToAdmin'
-import requestAddTeamMember from './requestAddTeamMember'
-import confirmAddTeamMember from './confirmAddTeamMember'
-import deactivateTeam from './deactivateTeam'
-import reactivateTeam from './reactivateTeam'
 import sendRequest from './sendRequest'
 import sendResponse from './sendResponse'
 import setConfidenceLevel from './setConfidenceLevel'
-import login from './login'
+import signUpUser from './signUpUser'
+import toggleApi from './toggleApi'
+import updateProfileInfo from './updateProfileInfo'
+import uploadToS3 from './uploadToS3'
+import verifyNewsletterEmail from './verifyNewsletterEmail'
+import verifyUserEmail from './verifyUserEmail'
 import GraphQLJSON from 'graphql-type-json'
 import  pubsub from '../subscriptionClient'
 import { GraphQLDateTime, GraphQLDate } from 'graphql-iso-date'
 
-const queries = { Query: { getSecurityQuestions, returnProfileInfo, getTeams, getMessages } }
+const queries = { Query: { returnProfileInfo, Teams, Apis, Messages } }
 const mutations = {
   Mutation: {
     confirmAddTeamMember,
     createTeam,
     deactivateTeam,
-    forgotPassword,
-    login,
     newsletterSignUp,
+    promoteMemberToAdmin,
     reactivateTeam,
     requestAddTeamMember,
     resetPassword,
@@ -40,10 +40,11 @@ const mutations = {
     sendResponse,
     setConfidenceLevel,
     signUpUser,
+    toggleApi,
     updateProfileInfo,
+    uploadToS3,
     verifyNewsletterEmail,
     verifyUserEmail,
-    promoteMemberToAdmin,
   }
 }
 const subscriptions = {

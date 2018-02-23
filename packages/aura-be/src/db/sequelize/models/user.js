@@ -6,9 +6,8 @@ module.exports = function(sequelize, DataTypes) {
   const attributes = {
     firstName: {
       type: DataTypes.STRING,
-      field: 'first_name',
     },
-    lastName:{ type: DataTypes.STRING, field: 'last_name' },
+    lastName:{ type: DataTypes.STRING, },
     email:{ type: DataTypes.STRING },
     password: {
       type: DataTypes.STRING,
@@ -31,26 +30,12 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
     },
-    secQuestion1: {
-      type: DataTypes.STRING,
-      field: 'sec_question_1'
-    },
-    secQuestion2: {
-      type: DataTypes.STRING,
-      field: 'sec_question_2'
-    },
-    secQuestionResponse1:{ type: DataTypes.STRING, field: 'sec_question_response_1' },
-    secQuestionResponse2:{ type: DataTypes.STRING, field: 'sec_question_response_2' },
     token:{ type: DataTypes.STRING },
-    activationNonce:{ type: DataTypes.STRING, field: 'activation_nonce' },
-    activationExpiry:{ type: DataTypes.DATE, field: 'activation_expiry' },
-    signInType:{ type: DataTypes.ENUM('password', 'google'), field: 'sign_in_type' },
+    activationNonce:{ type: DataTypes.STRING, },
+    activationExpiry:{ type: DataTypes.DATE, },
+    signInType:{ type: DataTypes.ENUM('password', 'google'), },
     active:{ type: DataTypes.BOOLEAN },
-    locked:{ type: DataTypes.BOOLEAN },
-    resetToken:{ type: DataTypes.STRING, field: 'reset_token' },
-    phoneNumber:{ type: DataTypes.STRING, field: 'phone_number' },
-    resetExpiry:{ type: DataTypes.DATE, field: 'reset_expiry' },
-    inPasswordReset:{ type: DataTypes.BOOLEAN, field: 'in_password_reset' },
+    phoneNumber:{ type: DataTypes.STRING, },
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -70,12 +55,12 @@ module.exports = function(sequelize, DataTypes) {
       beforeCreate: hashPassword,
       beforeUpdate: hashPassword,
     },
-    underscored: true,
   }
 
   var User = sequelize.define('User', attributes, options);
   User.associate = (models) => {
     User.belongsToMany(models.Team, { through: models.UserTeam })
+    User.hasOne(models.UserSecurityInfo, { foreignKey: 'userId', sourceKey: 'id' })
   }
 
   User.prototype.verifyPassword = async function(suppliedPassword) {
