@@ -17,8 +17,12 @@ import authHandler from './authHandler'
 import login from './login'
 import authRedox from './redoxInit'
 
+const redoxCredentials = authRedox()
+  .then(resp => (resp))
+  .catch(e => {
+      throw new Error('Redox unreachable.')
+  })
 const backend = express()
-
 backend.use(cors())
 backend.use('/login', bodyParser.json(), login)
 backend.use(async (req, res, next) => {
@@ -27,7 +31,7 @@ backend.use(async (req, res, next) => {
       || undefined
     try {
       const {user, session} = await authHandler(sessionToken)
-        .catch((err) => {throw new Error(err)})
+        .catch(err => {throw new Error(err)})
       req.session = session
       req.user = user
       next()
@@ -43,7 +47,7 @@ backend.use(
   bodyParser.json(),
   graphqlExpress((req, res) => {
     return {
-      context: {user: req.user, session: req.session},
+      context: {user: req.user, session: req.session, redoxCredentials},
       schema,
     }
   })
@@ -61,8 +65,6 @@ const db_sync_result = initDB()
 export { backend }
 export async function initHttpServer() {
   let db_success = await db_sync_result
-  let redoxCredentials = await authRedox()
-  console.log(redoxCredentials)
   console.log(`process.env.DATABASE_URL: ${process.env.DATABASE_URL}`)
   const server = createServer(backend)
   server.listen(process.env.LISTEN_PORT, () => {
