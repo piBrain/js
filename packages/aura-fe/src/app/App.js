@@ -1,12 +1,11 @@
-'use strict'
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React from 'react';
 import { apolloClient, store } from './store.js';
 import { Switch, Route } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import DashboardContainer from './containers/Dashboard/DashboardContainer';
+import { withTheme } from 'styled-components';
 
-export default class App extends Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -24,13 +23,15 @@ export default class App extends Component {
 
   render(props) {
     return (
-    	<ApolloProvider store= { store } client = { apolloClient } >
-      	<div>
-        	<Switch>
-          		<Route exact path='/' component={DashboardContainer} />
-          	</Switch>
-      	</div>
+      <ApolloProvider store={store} client={apolloClient} >
+          <div>
+            <Switch>
+                <Route exact path='/' component={DashboardContainer} theme={this.props.theme}/>
+              </Switch>
+          </div>
 		  </ApolloProvider>
     );
   }
 }
+
+export default withTheme(App);

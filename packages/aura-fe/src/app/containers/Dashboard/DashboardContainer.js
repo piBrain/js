@@ -1,27 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
+import Tray from '../../components/Tray/Tray.js';
 
-export default class Home extends Component {
+const auraTheme = {
+  auraBlue: 'rgb(103,151,208)',
+  gray: '#CCC',
+  cloudy:'#F5F5F5',
+  darkGray:'#757575',
+  black: '#262626'
+};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedIn: false,
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-  }
-
-  handleLogin () {
-    //manages the state of login validation from the server should go here
-    this.setState( { loggedIn: true } );
-  }
-
+class DashboardContainer extends React.Component {
   render(props) {
 
+    const Dashboard = styled.div`
+      background-color: ${props => props.theme.cloudy };
+      width: 100%;
+      height: 100%;
+      overflow:hidden;
+    `;
     return (
-      <div>
-      </div>
+      <ThemeProvider theme={auraTheme}>
+        <Dashboard className="dashboard-wrapper">
+          <Tray orientation={"left"} />
+        </Dashboard>
+      </ThemeProvider>
     );
   }
 }
 
+export default withTheme(DashboardContainer);
