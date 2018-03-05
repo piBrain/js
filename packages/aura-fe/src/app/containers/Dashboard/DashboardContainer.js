@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
 import Tray from '../../components/Tray/Tray.js';
+import DashboardTab from '../../components/DashboardTab/DashboardTab.js';
 
 const auraTheme = {
   auraBlue: 'rgb(103,151,208)',
@@ -19,10 +20,23 @@ class DashboardContainer extends React.Component {
       height: 100%;
       overflow:hidden;
     `;
+
+    const UsersContainer = styled.div`
+      position:relative;
+      float:left;
+      width: 77%;
+      height: 100%;
+      bottom: 0;
+    `;
+
     return (
       <ThemeProvider theme={auraTheme}>
         <Dashboard className="dashboard-wrapper">
           <Tray orientation={"left"} />
+          <UsersContainer className="users-wrapper">
+            <DashboardTab tabTitle={"Staff"} users={{}} />
+            <DashboardTab tabTitle={"Patients"} users={{}} />
+          </UsersContainer>
         </Dashboard>
       </ThemeProvider>
     );
