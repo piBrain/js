@@ -1,9 +1,10 @@
 export default () => [
     `type Query {
-      returnProfileInfo: JSON
+      UserProfile: UserProfile
       Teams: [Team]
       Apis: [Api]
       TeamMembers: [User]
       Messages(timeStamp: DateTime!, teamFilter: JSON ): [Message]
+      PatientAdminInformation(patientIdentifier: PatientIdentifier!): PatientAdminInformation
     }`
 ]

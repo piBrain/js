@@ -61,6 +61,7 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = (models) => {
     User.belongsToMany(models.Team, { through: models.UserTeam })
     User.hasOne(models.UserSecurityInfo, { foreignKey: 'userId', sourceKey: 'id' })
+    User.hasMany(models.Role, { foreignKey: 'userId' })
   }
 
   User.prototype.verifyPassword = async function(suppliedPassword) {

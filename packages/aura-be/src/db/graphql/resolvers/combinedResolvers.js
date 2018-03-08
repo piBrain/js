@@ -7,16 +7,15 @@ import forgotPassword from './forgotPassword'
 import Messages from './Messages'
 import Teams from './Teams'
 import newsletterSignUp from './newsletterSignUp'
+import PatientAdminInformation from './PatientAdminInformation'
 import promoteMemberToAdmin from './promoteMemberToAdmin'
 import reactivateTeam from './reactivateTeam'
 import requestAddTeamMember from './requestAddTeamMember'
 import resetPassword from './resetPassword'
-import returnProfileInfo from './returnProfileInfo'
-import sendRequest from './sendRequest'
+import UserProfile from './UserProfile'
 import sendResponse from './sendResponse'
 import setConfidenceLevel from './setConfidenceLevel'
 import signUpUser from './signUpUser'
-import toggleApi from './toggleApi'
 import updateProfileInfo from './updateProfileInfo'
 import uploadToS3 from './uploadToS3'
 import verifyNewsletterEmail from './verifyNewsletterEmail'
@@ -25,7 +24,7 @@ import GraphQLJSON from 'graphql-type-json'
 import  pubsub from '../subscriptionClient'
 import { GraphQLDateTime, GraphQLDate } from 'graphql-iso-date'
 
-const queries = { Query: { returnProfileInfo, Teams, Apis, Messages } }
+const queries = { Query: { UserProfile, Teams, Apis, Messages, PatientAdminInformation} }
 const mutations = {
   Mutation: {
     confirmAddTeamMember,
@@ -36,11 +35,8 @@ const mutations = {
     reactivateTeam,
     requestAddTeamMember,
     resetPassword,
-    sendRequest,
     sendResponse,
-    setConfidenceLevel,
     signUpUser,
-    toggleApi,
     updateProfileInfo,
     uploadToS3,
     verifyNewsletterEmail,

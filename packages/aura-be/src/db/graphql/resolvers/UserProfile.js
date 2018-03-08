@@ -1,6 +1,6 @@
 import db from '../../sequelize/models/db_connection'
 
-const executeReturnProfileInfo = async ({ nonce }) => {
+const executeUserProfile = async ({ nonce }) => {
   try {
     let session = await db.Session.findOne(
       { where: { nonce } },
@@ -16,9 +16,9 @@ const executeReturnProfileInfo = async ({ nonce }) => {
 }
 
 
-const returnProfileInfo = (_, args, context) => {
-  console.log('returnProfileInfo')
-  return executeReturnProfileInfo(args)
+const UserProfile = (_, args, context) => {
+  console.log('UserProfile')
+  return executeUserProfile(args)
 }
 
-export default returnProfileInfo
+export default UserProfile

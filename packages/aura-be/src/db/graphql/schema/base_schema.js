@@ -4,6 +4,7 @@ import Subscriptions from './subscriptions'
 import Objects from './objects'
 import Interfaces from './interfaces'
 import Unions from './unions'
+import Enums from './enums'
 import resolvers from '../resolvers/combinedResolvers'
 import { makeExecutableSchema } from 'graphql-tools'
 const baseSchema = () => [ `
@@ -25,7 +26,8 @@ const typeDefs = [
   Subscriptions,
   Objects,
   Interfaces,
-  Unions
+  Unions,
+  Enums
 ]
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })
