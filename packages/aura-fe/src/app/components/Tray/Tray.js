@@ -14,6 +14,7 @@ export default class Tray extends Component {
       margin:0;
       padding: 0;
       overflow:hidden;
+      box-shadow: 0 2px 2px 1px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
       float: ${props => this.props.orientation };
     `;
 

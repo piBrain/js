@@ -11,6 +11,10 @@ export default class AuraPrompt extends Component {
         left: 50%;
       }
     `;
+    const BoxShadow = styled.div`
+        box-shadow: 0 2px 2px 1px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+        overflow:hidden;
+    `;
     const AuraLogo = styled.div`
         width: 60px;
         height: 60px;
@@ -26,7 +30,7 @@ export default class AuraPrompt extends Component {
     `;
     const AuraText = styled.p`
         float:left;
-        width: calc(100% - 100px);
+        width: calc(100% - 84px);
         line-height: 60px;
         padding: 0 12px;
         height: 60px;
@@ -38,7 +42,7 @@ export default class AuraPrompt extends Component {
     `;
     return (
       <PromptWrapper className="prompt-wrapper">
-        {this.props.isActive ? <div><AuraLogo>A</AuraLogo><AuraText>hello</AuraText></div>: ''}
+        {this.props.isActive ? <BoxShadow><AuraLogo>A</AuraLogo><AuraText>hello</AuraText></BoxShadow>: ''}
       </PromptWrapper>
     );
   }

@@ -33,6 +33,7 @@ export default class Tabs extends Component {
         float:left;
         cursor:pointer;
         transition: 0.15s background-color ease-in-out;
+        box-shadow: 0 2px 2px 0px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 
 
         &:hover {
@@ -74,7 +75,7 @@ export default class Tabs extends Component {
     const Content = styled.div`
       width: 100%;
       margin: 0;
-      padding: 0;
+      padding: 1em;
       `;
     return (
       <Content className="tabs__content">
@@ -84,17 +85,10 @@ export default class Tabs extends Component {
   }
 
   render(props) {
-    const Tabs = styled.div`
-      width: 100%;
-      height: 100%;
-      margin:0;
-      padding: 0;
-      overflow:hidden;
-    `;
     const TabsContainer = styled.div`
       position:relative;
       float:left;
-      width: 77%;
+      width: 75%;
       height: 100%;
       bottom: 0;
     `;

@@ -5,12 +5,14 @@ export default class Card extends Component {
   render(props) {
     const CardWrapper = styled.div`
       background-color: ${props => this.props.grid ? 'white': props.theme.darkGray };
-      width: ${props => this.props.grid ? '33.3%' : "100%"};
+      width: ${props => this.props.grid ? 'calc(33.3% - 12px)' : "100%"};
+      margin: ${props => this.props.grid ? '6px' : '0'};
       height: 225px;
       float:left;
       overflow:hidden;
       cursor:pointer;
       transition: 0.15s background-color ease-in-out;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 
       &:hover {
         background-color: ${props => props.theme.lightGray};
