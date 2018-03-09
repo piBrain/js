@@ -3,6 +3,7 @@ import styled, { ThemeProvider, withTheme } from 'styled-components';
 import Tray from '../../components/Tray/Tray.js';
 import DashboardTab from '../../components/DashboardTab/DashboardTab.js';
 import Tabs from '../../components/Tabs/Tabs.js';
+import AuraPrompt from '../../components/AuraPrompt/AuraPrompt.js';
 
 const auraTheme = {
   auraBlue: 'rgb(103,151,208)',
@@ -60,9 +61,24 @@ const staff_table = [
   }
 ];
 
-
-
 class DashboardContainer extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      speechActive: false
+    }
+
+    this.toggleSpeech = this.toggleSpeech.bind(this);
+  }
+
+  toggleSpeech(e) {
+    e.preventDefault();
+    this.setState({speechActive: !this.state.speechActive})
+  }
+
+
   render(props) {
 
     const Dashboard = styled.div`
@@ -76,7 +92,8 @@ class DashboardContainer extends React.Component {
     return (
       <ThemeProvider theme={auraTheme}>
         <Dashboard className="dashboard-wrapper">
-          <Tray orientation={"left"} />
+          <Tray toggleSpeech={this.toggleSpeech} orientation={"left"} />
+          <AuraPrompt isActive={this.state.speechActive} />
             <Tabs>
               <DashboardTab label={"Staff"} users={staff_table} />
               <DashboardTab label={"Patients"} users={patient_table} />
