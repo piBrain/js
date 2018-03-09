@@ -38,7 +38,7 @@ export default class AuraPrompt extends Component {
     `;
     return (
       <PromptWrapper className="prompt-wrapper">
-      {this.props.isActive ? <div><AuraLogo>A</AuraLogo><AuraText>hello</AuraText></div>: ''}
+        {this.props.isActive ? <div><AuraLogo>A</AuraLogo><AuraText>hello</AuraText></div>: ''}
       </PromptWrapper>
     );
   }

@@ -8,7 +8,7 @@ export default class Tabs extends Component {
     super(props);
 
     this.state = {
-      selected: (this.props.selected != null ? this.props.selected : 0 )
+      selected: (this.props.selected ? this.props.selected : 0 )
     };
 
     this._renderTabs = this._renderTabs.bind(this);

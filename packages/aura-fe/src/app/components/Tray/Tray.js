@@ -45,7 +45,7 @@ export default class Tray extends Component {
             <NavButton linkTitle={"Options"} />
           </ListWrapper>
           <BotContainer>
-            <SpeechButton toggleSpeech={this.props.toggleSpeech} />
+            <SpeechButton toggleSpeech={this.props.toggleSpeech.bind(this)} />
           </BotContainer>
         </TrayWrapper>
 
