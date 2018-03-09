@@ -7,8 +7,7 @@ export default class SpeechButton extends Component {
     const SpeechButtonWrapper = styled.div`
       width: 80px;
       height: 80px;
-      background: ${props => props.theme.auraBlue };
-      margin: 0 auto;
+      background: ${props => props.theme.auraBlue }; margin: 0 auto;
       cursor:pointer;
       border-radius: 50%;
       transition: 0.2s all cubic-bezier(0.64, 0.57, 0.67, 1.53);

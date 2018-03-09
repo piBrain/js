@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
 import Tray from '../../components/Tray/Tray.js';
 import DashboardTab from '../../components/DashboardTab/DashboardTab.js';
+import Tabs from '../../components/Tabs/Tabs.js';
 
 const auraTheme = {
   auraBlue: 'rgb(103,151,208)',
@@ -10,6 +11,55 @@ const auraTheme = {
   darkGray:'#757575',
   black: '#262626'
 };
+
+
+const patient_table = [
+  {
+    name: 'Jon Doe',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Ian Butler',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Cory Dickson',
+    location: 'New York, NY',
+    profileImg: ''
+  }
+];
+
+const staff_table = [
+  {
+    name: 'Dr. M',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Dr. N',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Dr. F',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Dr. D',
+    location: 'New York, NY',
+    profileImg: ''
+  },
+  {
+    name: 'Dr. H',
+    location: 'New York, NY',
+    profileImg: ''
+  }
+];
+
+
 
 class DashboardContainer extends React.Component {
   render(props) {
@@ -21,22 +71,14 @@ class DashboardContainer extends React.Component {
       overflow:hidden;
     `;
 
-    const UsersContainer = styled.div`
-      position:relative;
-      float:left;
-      width: 77%;
-      height: 100%;
-      bottom: 0;
-    `;
-
     return (
       <ThemeProvider theme={auraTheme}>
         <Dashboard className="dashboard-wrapper">
           <Tray orientation={"left"} />
-          <UsersContainer className="users-wrapper">
-            <DashboardTab tabTitle={"Staff"} users={{}} />
-            <DashboardTab tabTitle={"Patients"} users={{}} />
-          </UsersContainer>
+            <Tabs>
+              <DashboardTab label={"Staff"} users={staff_table} />
+              <DashboardTab label={"Patients"} users={patient_table} />
+            </Tabs>
         </Dashboard>
       </ThemeProvider>
     );

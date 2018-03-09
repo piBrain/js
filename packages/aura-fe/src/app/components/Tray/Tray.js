@@ -35,7 +35,7 @@ export default class Tray extends Component {
       (orientation === "left" ?
 
         <TrayWrapper className="tray-wrapper">
-          <Card dark={true}></Card>
+          <Card dark={true} name={"Dr.Keeting"} location={"San Diego, CA"}></Card>
           <ListWrapper className="doctor-info-w">
             <ListItem columnKey={"first"} columnValue={"cory"} />
             <ListItem columnKey={"last"} columnValue={"d"} />

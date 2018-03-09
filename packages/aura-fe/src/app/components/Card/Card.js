@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export default class Card extends Component {
   render(props) {
     const CardWrapper = styled.div`
-      background-color: ${props => this.props.dark ? props.theme.darkGray : props.theme.gray };
-      width: ${props => props.grid ? '33.3%' : "100%"};
-      height: 25%;
+      background-color: ${props => this.props.grid ? props.theme.cloudy : props.theme.gray };
+      width: ${props => this.props.grid ? '33.3%' : "100%"};
+      height: 225px;
       float:left;
       overflow:hidden;
     `;
@@ -33,8 +33,8 @@ export default class Card extends Component {
     return (
       <CardWrapper className="card-wrapper">
         <CenterBox className="center-c">
-          <ProfileImage className="profile-img"></ProfileImage>
-          <TextArea>Dr. Keening<br></br><span className="location">New York, NY</span></TextArea>
+          <ProfileImage className="profile-img" src={this.props.profileImg}></ProfileImage>
+          <TextArea>{this.props.name}<br></br><span className="location">{this.props.location}</span></TextArea>
         </CenterBox>
       </CardWrapper>
     );
