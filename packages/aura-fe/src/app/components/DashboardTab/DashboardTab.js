@@ -12,8 +12,8 @@ export default class DashboardTab extends Component {
 
     const UsersWrapper = ({users}) => (
       <div>
-        {this.props.users.map(user => (
-          <Card dark={true} grid={true} name={user.name} location={user.location} profileImg={user.profileImg} />
+        {this.props.users.map((user, i)=> (
+          <Card key={i} dark={false} grid={true} name={user.name} location={user.location} profileImg={user.profileImg} />
         ))}
       </div>
     );

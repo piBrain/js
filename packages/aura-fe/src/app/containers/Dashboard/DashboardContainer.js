@@ -8,6 +8,7 @@ const auraTheme = {
   auraBlue: 'rgb(103,151,208)',
   gray: '#CCC',
   cloudy:'#F5F5F5',
+  lightGray: '#a1a1a1',
   darkGray:'#757575',
   black: '#262626'
 };
@@ -17,45 +18,45 @@ const patient_table = [
   {
     name: 'Jon Doe',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/cory.JPG')
   },
   {
     name: 'Ian Butler',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/itb.jpg')
   },
   {
     name: 'Cory Dickson',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/wam.jpg')
   }
 ];
 
 const staff_table = [
   {
-    name: 'Dr. M',
+    name: 'Dr. Manager',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/cory.JPG')
   },
   {
-    name: 'Dr. N',
+    name: 'Dr. Nietzche',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/wam.jpg')
   },
   {
-    name: 'Dr. F',
+    name: 'Dr. Fo',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/itb.jpg')
   },
   {
-    name: 'Dr. D',
+    name: 'Dr. Dealbreaker',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/wam.jpg')
   },
   {
-    name: 'Dr. H',
+    name: 'Dr. Hellmann',
     location: 'New York, NY',
-    profileImg: ''
+    profileImg: require('../../../assets/itb.jpg')
   }
 ];
 
@@ -69,6 +70,7 @@ class DashboardContainer extends React.Component {
       width: 100%;
       height: 100%;
       overflow:hidden;
+      font-family: 'Noto Sans', sans-serif;
     `;
 
     return (

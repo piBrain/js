@@ -27,14 +27,16 @@ export default class Tabs extends Component {
 
       const TabButton = styled.div`
         width: 200px;
-        background: ${props => props.theme.darkGray };
+        background: ${props => props.className === 'active' ? props.theme.darkGray : props.theme.gray };
         height: 50px;
         display:block;
         float:left;
         cursor:pointer;
+        transition: 0.15s background-color ease-in-out;
+
 
         &:hover {
-          background: ${props => props.theme.gray };
+          background: ${props => props.theme.lightGray };
         }
       `;
 
@@ -45,8 +47,8 @@ export default class Tabs extends Component {
       `;
 
       return (
-        <TabButton role="tab" key={idx} aria-controls={`panel${idx}`}>
-          <ButtonText className={activeClass}  onClick={this.onClick.bind(this, idx)} href="#">
+        <TabButton onClick={this.onClick.bind(this, idx)} className={activeClass} role="tab" key={idx} aria-controls={`panel${idx}`}>
+          <ButtonText href="#">
             {child.props.label}
           </ButtonText>
         </TabButton>
