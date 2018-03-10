@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {Motion, spring} from 'react-motion';
 
 export default class Tabs extends Component {
 
@@ -48,11 +49,16 @@ export default class Tabs extends Component {
       `;
 
       return (
-        <TabButton onClick={this.onClick.bind(this, idx)} className={activeClass} role="tab" key={idx} aria-controls={`panel${idx}`}>
-          <ButtonText href="#">
-            {child.props.label}
-          </ButtonText>
-        </TabButton>
+        <Motion defaultStyle={{o:0, w: 0}} style={{o: spring(1), w:spring(200, {precision:0.01})}}>
+        {
+          interpolatingStyle =>
+          <TabButton style={{ opacity: interpolatingStyle.o, width: interpolatingStyle.w + 'px'}} onClick={this.onClick.bind(this, idx)} className={activeClass} role="tab" key={idx} aria-controls={`panel${idx}`}>
+            <ButtonText href="#">
+              {child.props.label}
+            </ButtonText>
+          </TabButton>
+        }
+        </Motion>
       );
     }
 
@@ -63,7 +69,7 @@ export default class Tabs extends Component {
       display:block;
       `;
 
-   return (
+    return (
       <TabsHeader className="tabs__labels" role="tablist">
         {this.props.children.map(labels.bind(this))}
       </TabsHeader>

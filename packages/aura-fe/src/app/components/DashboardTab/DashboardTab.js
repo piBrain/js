@@ -15,7 +15,7 @@ export default class DashboardTab extends Component {
     const users = this.props.users;
 
     for (let i = 0; i < users.length; i++) {
-      _defaultStyles.push({ o: 0 })
+      _defaultStyles.push({ y: 20, o: 0 })
     }
 
     return (
@@ -24,12 +24,12 @@ export default class DashboardTab extends Component {
         defaultStyles={_defaultStyles}
         styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i === 0
-          ? {o: spring(1, presets.gentle)}
-          : {o: spring(prevInterpolatedStyles[i - 1].o)}
+          ? {y: spring(0, {stiffness: 60, damping: 8}), o: spring(1, presets.gentle)}
+          : {y: spring(prevInterpolatedStyles[i-1].y), o: spring(prevInterpolatedStyles[i - 1].o)}
         })}>{ (interpolatingStyles)=>
             <div>
               {interpolatingStyles.map((style, i) =>
-                <Card key={i} dark={false} grid={true} name={users[i].name} location={users[i].location} profileImg={users[i].profileImg} style={{opacity: style.o}} />)
+                <Card key={i} dark={false} grid={true} name={users[i].name} location={users[i].location} profileImg={users[i].profileImg} style={{transform: 'translateY(-'+ style.y +'px)', opacity: style.o}} />)
               }
             </div>
           }</StaggeredMotion>

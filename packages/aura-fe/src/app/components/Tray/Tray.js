@@ -4,6 +4,15 @@ import Card from '../Card/Card.js';
 import ListItem from '../ListItem/ListItem.js';
 import NavButton from '../NavButton/NavButton.js';
 import SpeechButton from '../SpeechButton/SpeechButton.js';
+import {Motion, spring} from 'react-motion';
+
+const user_data = {
+  first_name: 'Julia',
+  last_name: 'Shao',
+  id: '110006656',
+  role: 'Admin',
+  years: '5yrs',
+};
 
 export default class Tray extends Component {
   render(props) {
@@ -36,13 +45,18 @@ export default class Tray extends Component {
       (orientation === "left" ?
 
         <TrayWrapper className="tray-wrapper">
-        <Card dark={true} name={"Dr. Keeting"} location={"San Diego, CA"} profileImg={require('../../../assets/ian.JPG')}></Card>
+          <Motion defaultStyle={{w: 0}} style={{w:spring(100, {precision:0.0001})}}>
+          {
+            interpolatingStyle =>
+              <Card style={{width: interpolatingStyle.w + "%"}} dark={true} name={"Dr. Keeting"} location={"San Diego, CA"} profileImg={require('../../../assets/ian.JPG')}></Card>
+          }
+          </Motion>
           <ListWrapper className="doctor-info-w">
-            <ListItem columnKey={"first"} columnValue={"cory"} />
-            <ListItem columnKey={"last"} columnValue={"d"} />
-            <ListItem columnKey={"last"} columnValue={"d"} />
-            <ListItem columnKey={"last"} columnValue={"d"} />
-            <ListItem columnKey={"last"} columnValue={"d"} />
+            <ListItem columnKey={"First"} columnValue={user_data.first_name} />
+            <ListItem columnKey={"Last"} columnValue={user_data.last_name} />
+            <ListItem columnKey={"NIP"} columnValue={user_data.id} />
+            <ListItem columnKey={"Role"} columnValue={user_data.role} />
+            <ListItem columnKey={"Years"} columnValue={user_data.years} />
             <NavButton linkTitle={"Options"} />
           </ListWrapper>
           <BotContainer>

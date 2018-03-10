@@ -5,8 +5,8 @@ export default class Card extends Component {
   render(props) {
     const CardWrapper = styled.div`
       background-color: ${props => this.props.grid ? 'white': props.theme.darkGray };
-      width: ${props => this.props.grid ? 'calc(33.3% - 12px)' : "100%"};
-      margin: ${props => this.props.grid ? '6px' : '0'};
+      width: ${props => this.props.grid ? 'calc(33.3% - 16px)' : "100%"};
+      margin: ${props => this.props.grid ? '8px' : '0'};
       height: 225px;
       float:left;
       overflow:hidden;
