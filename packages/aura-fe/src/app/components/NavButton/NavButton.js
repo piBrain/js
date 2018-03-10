@@ -18,6 +18,8 @@ export default class NavButton extends Component {
 
       &:hover {
         transform: scale(1.1);
+        background: white;
+        color: ${props => props.theme.black};
       }
     `;
 

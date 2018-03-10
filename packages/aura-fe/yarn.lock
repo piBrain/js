@@ -6327,6 +6327,12 @@ react-css-modules@^4.1.0:
     lodash "^4.16.6"
     object-unfreeze "^1.1.0"
 
+react-css-stagger@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/react-css-stagger/-/react-css-stagger-0.0.8.tgz#8d3876f6293874c08e472bccf01f3040a453b840"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-css-transition-replace@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-css-transition-replace/-/react-css-transition-replace-2.2.1.tgz#e74eb2d1f4beaff31bf260767333e60ff3fe0d32"
@@ -6373,11 +6379,19 @@ react-motion-ui-pack@^0.10.2:
     prop-types "^15.5.10"
     react-motion "^0.4.5"
 
-react-motion@^0.4.5, react-motion@^0.4.7:
+react-motion@^0.4.5:
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.4.8.tgz#23bb2dd27c2d8e00d229e45572d105efcf40a35e"
   dependencies:
     create-react-class "^15.5.2"
+    performance-now "^0.2.0"
+    prop-types "^15.5.8"
+    raf "^3.1.0"
+
+react-motion@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
+  dependencies:
     performance-now "^0.2.0"
     prop-types "^15.5.8"
     raf "^3.1.0"
@@ -6497,6 +6511,10 @@ react-scripts@0.8.5:
     whatwg-fetch "1.0.0"
   optionalDependencies:
     fsevents "1.0.14"
+
+react-staggered-animation@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-staggered-animation/-/react-staggered-animation-0.0.2.tgz#7458086e747548e85f0ebecd4a3a6e67cf117844"
 
 react-transform-hmr@^1.0.4:
   version "1.0.4"

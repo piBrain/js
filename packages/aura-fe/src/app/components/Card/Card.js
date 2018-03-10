@@ -47,7 +47,7 @@ export default class Card extends Component {
     `;
 
     return (
-      <CardWrapper className="card-wrapper">
+      <CardWrapper style={this.props.style} className="card-wrapper">
         <CenterBox className="center-c">
           <ProfileImage className="profile-img" src={this.props.profileImg}></ProfileImage>
           <TextArea>{this.props.name}<br></br><span className="location">{this.props.location}</span></TextArea>
