@@ -29,13 +29,6 @@ export default class ListItem extends Component {
       background: ${props => props.theme.gray };
     `;
 
-    const TextArea = styled.p`
-      color: ${props => this.props.dark ? 'white' : props.theme.gray };
-      text-align:center;
-      font-size: 18px;
-      display:inline-block;
-    `;
-
     return (
       <ListItem className="li-wrapper">
         <Column>Key</Column>

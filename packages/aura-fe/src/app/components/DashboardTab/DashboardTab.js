@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Card from '../Card/Card.js';
-import Stagger from 'react-css-stagger';
 import {StaggeredMotion, spring, presets } from 'react-motion';
 
 export default class DashboardTab extends Component {

@@ -19,7 +19,7 @@ export default class SpeechButton extends Component {
 
     return (
       <SpeechButtonWrapper onClick={this.props.toggleSpeech.bind(this)} className="speech-btn-w">
-        <img className="icon" src={microphoneIcon} style={{ margin: '1em' }}></img>
+        <img className="icon" role="presentation" src={microphoneIcon} style={{ margin: '1em' }}></img>
       </SpeechButtonWrapper>
     );
   }
