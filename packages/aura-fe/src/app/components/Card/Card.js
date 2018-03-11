@@ -12,10 +12,10 @@ export default class Card extends Component {
       overflow:hidden;
       cursor:pointer;
       transition: 0.15s background-color ease-in-out;
-      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+      box-shadow: ${props => this.props.grid ? '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)' : 'none'};
 
       &:hover {
-        background-color: ${props => props.theme.lightGray};
+        background-color: ${props => this.props.grid ? props.theme.lightGray : props.theme.gray };
       }
     `;
     const CenterBox = styled.div`

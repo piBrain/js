@@ -15,7 +15,7 @@ export default class Message extends Component {
       <li className={className}>
           <div className="top-c">
             <div className="avatar">
-              <img src={require(`../../../../assets/material-letters/${firstLetter}.svg`)} alt={firstLetter} />
+              <img alt={firstLetter} />
             </div>
           </div>
           <div className="messages">
@@ -23,7 +23,6 @@ export default class Message extends Component {
             <p className="timestamp">{this.props.author} <Timestamp time={this.created_at} format='time' /></p>
           </div>
       </li>
-
     );
   }
 }

@@ -36,8 +36,10 @@ export default class Tray extends Component {
     `;
 
     const BotContainer = styled.div`
-      position:relative;
-      margin-top: 25%;
+      position:absolute;
+      bottom:0;
+      width: 23%;
+      margin-bottom: 4em;
     `;
 
     const orientation  = this.props.orientation;
@@ -51,14 +53,25 @@ export default class Tray extends Component {
               <Card style={{width: interpolatingStyle.w + "%"}} dark={true} name={"Dr. Keeting"} location={"San Diego, CA"} profileImg={require('../../../assets/ian.JPG')}></Card>
           }
           </Motion>
-          <ListWrapper className="doctor-info-w">
-            <ListItem columnKey={"First"} columnValue={user_data.first_name} />
-            <ListItem columnKey={"Last"} columnValue={user_data.last_name} />
-            <ListItem columnKey={"NIP"} columnValue={user_data.id} />
-            <ListItem columnKey={"Role"} columnValue={user_data.role} />
-            <ListItem columnKey={"Years"} columnValue={user_data.years} />
-            <NavButton linkTitle={"Options"} />
-          </ListWrapper>
+          {this.props.chatboxRender ?
+            <Motion defaultStyle={{w: 0}} style={{w:spring(100, {precision:0.0001})}}>
+            {
+              interpolatingStyle =>
+                <Card style={{background: '#a1a1a1', width: interpolatingStyle.w + "%"}} dark={true} name={"Dr. Keeting"} location={"San Diego, CA"} profileImg={require('../../../assets/ian.JPG')}></Card>
+            }
+            </Motion>
+
+            :
+
+            <ListWrapper className="doctor-info-w">
+              <ListItem columnKey={"First"} columnValue={user_data.first_name} />
+              <ListItem columnKey={"Last"} columnValue={user_data.last_name} />
+              <ListItem columnKey={"NIP"} columnValue={user_data.id} />
+              <ListItem columnKey={"Role"} columnValue={user_data.role} />
+              <ListItem columnKey={"Years"} columnValue={user_data.years} />
+              <NavButton linkTitle={"Options"} />
+            </ListWrapper>
+          }
           <BotContainer>
             <SpeechButton toggleSpeech={this.props.toggleSpeech.bind(this)} />
           </BotContainer>
