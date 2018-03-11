@@ -1,15 +1,61 @@
-.message-container {
-  font: 12px 'PT Mono', monospace;
-  background:#c6ceb9;
-  &.aura {
-    background: #98c5ec;
+.other {
+  .top-c {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border: 5px solid white;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+    }
   }
-  width: 25%;
-  margin: 15px 15px;
-  border-radius: 5px;
-  border: 1px solid #fff8f8;
-  box-shadow: -2px -1px 4px 0px #9fa4b1;
-  position: relative;
-  .author {}
-  .message {}
+}
+
+
+.self {
+  justify-content: flex-end;
+  align-items: flex-end;
+  .messages {
+    order: 1;
+    border-bottom-right-radius: 0; // weird shadow fix
+  }
+  .top-c {
+    order: 2;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border: 5px solid white;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      box-shadow: 1px 1px 2px rgba(black, 0.2); // not quite perfect but close
+    }
+  }
+}
+
+.avatar {
+  display: block;
+}
+.messages {
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(black, 0.2);
+  width: 100%;
+  text-align: center;
+  p.message {
+    font-size: 0.8rem;
+    margin: 0 0 0.2rem 0;
+  }
+  p.timestamp {
+    font-size: 0.6rem;
+    color: #ccc;
+    text-align: inherit;
+  }
 }

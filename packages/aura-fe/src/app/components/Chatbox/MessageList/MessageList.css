@@ -1,3 +1,33 @@
-.messages-container {
-  background: #f5f3f2;
-  overflow: hidden; }
+.discussion {
+  list-style: none;
+  background: #e5e5e5;
+  margin: 0;
+  padding: 100px 100px 100px 100px;
+  font: 12px 'PT Mono', monospace;
+  height: 60%;
+  overflow-y: scroll; }
+  .discussion li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex; }
+  .discussion .top-c {
+    position: relative;
+    width: 40px; }
+    .discussion .top-c img {
+      display: block;
+      width: 100%;
+      margin: 0 0 0 0; }
+
+.fade-enter {
+  opacity: 0.01; }
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+
+.fade-leave {
+  opacity: 1; }
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1); }
