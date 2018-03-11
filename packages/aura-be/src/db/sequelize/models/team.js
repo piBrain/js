@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     }
-  }, { underscored: true });
+  }, );
 
   Team.associate = (models) => {
     Team.belongsToMany(models.User, { through: models.UserTeam })

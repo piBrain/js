@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM('REQUEST', 'RESPONSE'),
+      type: DataTypes.ENUM('REQUEST', 'RESPONSE', 'FILE'),
       allowNull: false
     },
     text: {
@@ -38,14 +38,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.JSONB,
       allowNull: true,
     },
+    s3Path: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     userTeamId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'user_team_id'
     }
-  }, { underscored: true });
+  }, );
   Message.associate = (models) => {
-    Message.belongsTo(models.UserTeam, { foreignKey: 'user_team_id', targetKey: 'tag'})
+    Message.belongsTo(models.UserTeam, { foreignKey: 'userTeamId', targetKey: 'tag'})
   }
   return Message;
 };

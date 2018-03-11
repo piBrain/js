@@ -1,21 +1,33 @@
 import db from '../../sequelize/models/db_connection'
 import request from 'request-promise-native'
 import pubsub from '../subscriptionClient'
-const executeSendResponse = async ({ nonce, userTeamId, userRequest, teamName }) => {
+const auraProcessRequest = async (transaction, userRequest, userTeamId) => {
+  let auraRes = await request.post(
+    'http://localhost:5000/predict',
+    { form : {sentence: userRequest } }
+  )
+  auraRes = JSON.parse(auraRes)
+  return auraRes.join(' ')
+}
+const executeSendResponse = async ({ nonce, userTeamId, userRequest, teamName, file }) => {
   const transaction  = await db.sequelize.transaction()
+  const userTeam = await db.UserTeam.findOne({ where: { tag: userTeamId } })
+  if(!userTeam) { return { err: true, response: 'User or Team does not exist.' } }
   try {
     let session =  await db.Session.findOne({ where: { nonce } })
     let user = await session.getUser()
     if(!session) { return { err: true, response: 'Whoops! Something went wrong.' } }
-    const userTeam = await db.UserTeam.findOne({ where: { tag: userTeamId } })
-    if(!userTeam) { return { err: true, response: 'User or Team does not exist.' } }
     if(!user || user.get('id') != userTeam.get('userId')) {
       throw (`${user.get('firstName')} ${user.get('lastName')} ${user.get('id')} ${teamName} attempted unauthorized request.`)
     }
-    let auraRes = await request.post('http://dev.pibrain.ngrok.io/predict', { form : {sentence: userRequest } })
-    auraRes = JSON.parse(auraRes)
+    var auraRes;
+    if(!file) {
+      auraRes = await auraProcessRequest(transaction, userRequest, userTeamId)
+    } else {
+      auraRes = "What would you like me to do with the file?"
+    }
     const message = await db.Message.create({text: auraRes, type: 'RESPONSE', userTeamId}, {transaction})
-    await userTeam.addResponse(response)
+    await userTeam.addResponse(message)
     await userTeam.save({transaction})
     await pubsub.publish(
       'messages',
@@ -26,9 +38,13 @@ const executeSendResponse = async ({ nonce, userTeamId, userRequest, teamName })
   } catch(err) {
     console.error(err)
     transaction.rollback()
+    const response = 'Something broke. I wasn\'t able to complete your request.'
+    const message = await db.Message.create({text: response, type: 'RESPONSE', userTeamId})
+    await userTeam.addResponse(message)
+    await userTeam.save()
     await pubsub.publish(
       'messages',
-      { messages: [{ message: 'Something broke. I wasn\'t able to complete your request.', type: 'FAILED_RESPONSE', author: 'Aura', team: teamName }]}
+      { messages: [{ message: response, type: 'FAILED_RESPONSE', author: 'Aura', team: teamName }]}
     )
     return { err: true, data: { success: false } }
   }

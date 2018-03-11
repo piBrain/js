@@ -1,7 +1,12 @@
 import Mutations from './mutations'
 import Queries from './queries'
 import Subscriptions from './subscriptions'
+import Objects from './objects'
+import Interfaces from './interfaces'
+import Unions from './unions'
+import Enums from './enums'
 import resolvers from '../resolvers/combinedResolvers'
+
 import { makeExecutableSchema } from 'graphql-tools'
 const baseSchema = () => [ `
   scalar JSON
@@ -19,7 +24,11 @@ const typeDefs = [
   baseSchema,
   Mutations,
   Queries,
-  Subscriptions
+  Subscriptions,
+  Objects,
+  Interfaces,
+  Unions,
+  Enums
 ]
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })

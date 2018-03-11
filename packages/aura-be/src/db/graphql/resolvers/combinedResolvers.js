@@ -1,49 +1,48 @@
-import { merge  } from 'lodash'
-import signUpUser from './signUpUser'
-import newsletterSignUp from './newsletterSignUp'
-import verifyUserEmail from './verifyUserEmail'
-import verifyNewsletterEmail from './verifyNewsletterEmail'
-import getSecurityQuestions from './getSecurityQuestions'
-import forgotPassword from './forgotPassword'
-import resetPassword from './resetPassword'
-import returnProfileInfo from './returnProfileInfo'
-import updateProfileInfo from './updateProfileInfo'
-import createTeam from './createTeam'
-import getTeams from './getTeams'
-import getMessages from './getMessages'
-import promoteMemberToAdmin from './promoteMemberToAdmin'
-import requestAddTeamMember from './requestAddTeamMember'
+import Apis from './Apis'
+import GraphQLJSON from 'graphql-type-json'
+import { MedicalProfessionals, MedicalProfessional } from './MedicalProfessionals'
+import Messages from './Messages'
+import { Patients, Patient } from './Patients'
+import patientTypeResolver from './PatientTypeResolver'
+import Teams from './Teams'
+import UserProfile from './UserProfile'
 import confirmAddTeamMember from './confirmAddTeamMember'
+import createTeam from './createTeam'
+import db from '../../sequelize/models/db_connection'
 import deactivateTeam from './deactivateTeam'
+import forgotPassword from './forgotPassword'
+import newsletterSignUp from './newsletterSignUp'
+import promoteMemberToAdmin from './promoteMemberToAdmin'
+import pubsub from '../subscriptionClient'
 import reactivateTeam from './reactivateTeam'
-import sendRequest from './sendRequest'
+import requestAddTeamMember from './requestAddTeamMember'
+import resetPassword from './resetPassword'
 import sendResponse from './sendResponse'
 import setConfidenceLevel from './setConfidenceLevel'
-import login from './login'
-import GraphQLJSON from 'graphql-type-json'
-import  pubsub from '../subscriptionClient'
+import signUpUser from './signUpUser'
+import updateProfileInfo from './updateProfileInfo'
+import uploadToS3 from './uploadToS3'
+import verifyNewsletterEmail from './verifyNewsletterEmail'
+import verifyUserEmail from './verifyUserEmail'
 import { GraphQLDateTime, GraphQLDate } from 'graphql-iso-date'
-
-const queries = { Query: { getSecurityQuestions, returnProfileInfo, getTeams, getMessages } }
+import { merge  } from 'lodash'
+const queries = { Query: { UserProfile, Teams, Apis, MedicalProfessional, MedicalProfessionals, Messages, Patients, Patient}, }
 const mutations = {
   Mutation: {
     confirmAddTeamMember,
     createTeam,
     deactivateTeam,
-    forgotPassword,
-    login,
     newsletterSignUp,
+    promoteMemberToAdmin,
     reactivateTeam,
     requestAddTeamMember,
     resetPassword,
-    sendRequest,
     sendResponse,
-    setConfidenceLevel,
     signUpUser,
     updateProfileInfo,
+    uploadToS3,
     verifyNewsletterEmail,
     verifyUserEmail,
-    promoteMemberToAdmin,
   }
 }
 const subscriptions = {
@@ -57,4 +56,5 @@ const scalarResolvers = {
   DateTime: GraphQLDateTime,
   Date: GraphQLDate
 }
-export default merge({}, queries, mutations, subscriptions, scalarResolvers)
+
+export default merge({}, queries, mutations, subscriptions, scalarResolvers, patientTypeResolver)

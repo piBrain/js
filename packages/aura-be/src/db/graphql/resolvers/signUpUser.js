@@ -1,5 +1,4 @@
 import db from '../../sequelize/models/db_connection'
-import authHandler from './authHandler'
 import shortId from 'shortid'
 import { mailClient, emailDefaults } from '../../../lib/mail_client'
 

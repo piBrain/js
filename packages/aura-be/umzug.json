@@ -1,0 +1,17 @@
+[
+  "20170319174448-create-user.js",
+  "20170326040708-create-session.js",
+  "20170628161702-add_account_activation_columns_to_user.js",
+  "20170704162802-add_password_reset_meta_to_session.js",
+  "20170704162817-add_password_reset_meta_to_user.js",
+  "20170704173833-add_security_questions_to_user.js",
+  "20170704231002-add_hashedPassword_column_to_user.js",
+  "20170722185539-create-team.js",
+  "20170817210932-add-active-column-teams.js",
+  "20170911172849-create-user-team-table.js",
+  "20170911172901-create-messages-table.js",
+  "20170914232258-add-completion-confidence-level.js",
+  "20170915002509-add-local-flag-to-session.js",
+  "20171222222039-add-additional-message-type.js",
+  "20180205184908-create-api.js"
+]
