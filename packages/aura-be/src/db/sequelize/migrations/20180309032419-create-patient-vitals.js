@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('PatientDemographics', {
+    return queryInterface.createTable('PatientVitals', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,38 +13,29 @@ module.exports = {
         allowNull: false,
         references: { model: 'Patients', key: 'id' }
       },
-      firstName: {
+      code: {
         type: Sequelize.STRING
       },
-      lastName: {
+      codeSystemName: {
         type: Sequelize.STRING
       },
-      dob: {
+      name: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.STRING
+      },
+      interpretation: {
+        type: Sequelize.STRING
+      },
+      dateTimeTaken: {
         type: Sequelize.DATE
       },
-      sex: {
-        type: Sequelize.ENUM(['Female', 'Male', 'Unknown', 'Other'])
+      value: {
+        type: Sequelize.FLOAT
       },
-      race: {
+      units: {
         type: Sequelize.STRING
-      },
-      isDeceased: {
-        type: Sequelize.BOOLEAN
-      },
-      homePhone: {
-        type: Sequelize.STRING
-      },
-      officePhone: {
-        type: Sequelize.STRING
-      },
-      mobilePhone: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.JSONB
       },
       createdAt: {
         allowNull: false,
@@ -54,9 +45,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }).then(() => {
+      queryInterface.addConstraint('PatientVitals', ['codeSystemName', 'code'], {
+        type: 'check',
+        where: {
+          $or: [
+            {$and: [{ code: { $ne: null }},{ codeSystemName: { $ne: null } }] },
+            { $and: [ { code: { $eq: null } }, { codeSystemName: { $eq: null } } ] }
+          ]
+        }
+      })
+    })
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('PatientDemographics');
+    return queryInterface.dropTable('PatientVitals');
   }
 };

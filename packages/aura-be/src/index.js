@@ -5,7 +5,8 @@ config()
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import bodyParser from 'body-parser'
 import express from 'express'
-import { graphiqlExpress, graphqlExpress } from 'graphql-server-express'
+import { graphiqlExpress, graphqlExpress } from 'apollo-server-express'
+import { ApolloEngine } from 'apollo-engine'
 import db from './db/sequelize/models/db_connection'
 import cors from 'cors'
 import crypto from 'crypto'
@@ -49,6 +50,8 @@ backend.use(
     return {
       context: {user: req.user, session: req.session, redoxCredentials},
       schema,
+      tracing: true,
+      cacheControl: true
     }
   })
 )
@@ -66,23 +69,25 @@ export { backend }
 export async function initHttpServer() {
   let db_success = await db_sync_result
   console.log(`process.env.DATABASE_URL: ${process.env.DATABASE_URL}`)
-  const server = createServer(backend)
-  server.listen(process.env.LISTEN_PORT, () => {
+  const apolloEngine = new ApolloEngine({
+    apiKey: process.env.APOLLO_ENGINE_API_KEY
+  })
+  apolloEngine.listen({ port: process.env.LISTEN_PORT, expressApp: backend}, () => {
     new SubscriptionServer({
         execute,
         subscribe,
         schema
       }, {
-        server,
+        server: apolloEngine,
         path: '/subscriptions',
       });
   })
   return new Promise((resolve, reject) => {
-    server.on('listening', () => {
+    apolloEngine.on('listening', () => {
       console.log(`DataQA API now listening on port ${process.env.LISTEN_PORT}`)
-      resolve(server)
+      resolve(apolloEngine)
     })
-    server.on('error', err => reject(err))
+    apolloEngine.on('error', err => reject(err))
   })
 }
 

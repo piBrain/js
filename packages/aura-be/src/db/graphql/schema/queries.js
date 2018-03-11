@@ -5,6 +5,9 @@ export default () => [
       Apis: [Api]
       TeamMembers: [User]
       Messages(timeStamp: DateTime!, teamFilter: JSON ): [Message]
-      PatientAdminInformation(patientIdentifier: PatientIdentifier!): PatientAdminInformation
+      Patients: [Patient]
+      Patient(patiendIdentifier: PatientIdentifierInput!): Patient
+      MedicalProfessionals: [MedicalProfessional]
+      MedicalProfessional(npi: Int!): MedicalProfessional
     }`
 ]

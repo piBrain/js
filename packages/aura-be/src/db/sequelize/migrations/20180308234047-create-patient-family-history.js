@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('PatientDemographics', {
+    return queryInterface.createTable('PatientFamilyHistories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,38 +13,17 @@ module.exports = {
         allowNull: false,
         references: { model: 'Patients', key: 'id' }
       },
-      firstName: {
+      relationCode: {
         type: Sequelize.STRING
       },
-      lastName: {
+      relationCodeSystemName: {
         type: Sequelize.STRING
       },
-      dob: {
-        type: Sequelize.DATE
-      },
-      sex: {
-        type: Sequelize.ENUM(['Female', 'Male', 'Unknown', 'Other'])
-      },
-      race: {
+      relationName: {
         type: Sequelize.STRING
       },
-      isDeceased: {
+      relationDeceased: {
         type: Sequelize.BOOLEAN
-      },
-      homePhone: {
-        type: Sequelize.STRING
-      },
-      officePhone: {
-        type: Sequelize.STRING
-      },
-      mobilePhone: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.JSONB
       },
       createdAt: {
         allowNull: false,
@@ -54,9 +33,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }).then(() => {
+      queryInterface.addConstraint('PatientFamilyHistories', ['relationCodeSystemName', 'relationCode'], {
+        type: 'check',
+        where: {
+          $or: [
+            {$and: [{ relationCode: { $ne: null }},{ relationCodeSystemName: { $ne: null } }] },
+            { $and: [ { relationCode: { $eq: null } }, { relationCodeSystemName: { $eq: null } } ] }
+          ]
+        }
+      })
+    })
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('PatientDemographics');
+    return queryInterface.dropTable('PatientFamilyHistories');
   }
 };

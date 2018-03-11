@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
     medicalProfessionalId: { type: DataTypes.INTEGER }
   }, );
   Role.associate = (models) => {
-    Role.belongsTo(models.MedicalProfessional, { sourceKey: 'medicalProfessionalId' })
+    Role.belongsTo(models.MedicalProfessional, { foreignKey: 'medicalProfessionalId' })
   }
   return Role;
 };

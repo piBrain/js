@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     fistName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING
+    phoneNumber: DataTypes.STRING,
+    headshotImgResourceLink: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

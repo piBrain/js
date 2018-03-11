@@ -4,7 +4,6 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.ENUM(['MR']),
     patientId: DataTypes.INTEGER,
     identifier: DataTypes.STRING,
-    patientDemographicsId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -13,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   PatientIdentifier.associate = (models) => {
-    PatientIdentifier.belongsTo(models.PatientDemographics, { sourceKey: 'patientDemographicsId' })
     PatientIdentifier.belongsTo(models.Patient, { sourceKey: 'patientId' })
   }
   return PatientIdentifier;

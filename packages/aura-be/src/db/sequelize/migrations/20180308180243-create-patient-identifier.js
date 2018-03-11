@@ -13,14 +13,11 @@ module.exports = {
       },
       patientId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {model: 'Patients', key:'id'}
       },
       identifier: {
         type: Sequelize.STRING
-      },
-      patientDemographicsId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'PatientDemographics', key: 'id' }
       },
       createdAt: {
         allowNull: false,

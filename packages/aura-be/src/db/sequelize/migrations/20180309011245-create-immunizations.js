@@ -1,50 +1,43 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('PatientDemographics', {
+    return queryInterface.createTable('PatientImmunizations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      patientId: {
-        type: Sequelize.INTEGER,
+      dateTime: {
         allowNull: false,
-        references: { model: 'Patients', key: 'id' }
-      },
-      firstName: {
-        type: Sequelize.STRING
-      },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      dob: {
         type: Sequelize.DATE
       },
-      sex: {
-        type: Sequelize.ENUM(['Female', 'Male', 'Unknown', 'Other'])
-      },
-      race: {
+      routeName: {
         type: Sequelize.STRING
       },
-      isDeceased: {
-        type: Sequelize.BOOLEAN
-      },
-      homePhone: {
+      productManufacturer: {
         type: Sequelize.STRING
       },
-      officePhone: {
+      productCode: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      productCodeSystemName: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      productName: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      productLotNumber: {
         type: Sequelize.STRING
       },
-      mobilePhone: {
+      doseQuantity: {
         type: Sequelize.STRING
       },
-      email: {
+      doseUnits: {
         type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.JSONB
       },
       createdAt: {
         allowNull: false,
@@ -53,10 +46,15 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      patientId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Patients', key: 'id' }
       }
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('PatientDemographics');
+    return queryInterface.dropTable('PatientImmunizations');
   }
 };

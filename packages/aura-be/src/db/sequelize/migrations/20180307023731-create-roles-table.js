@@ -9,7 +9,7 @@ module.exports = {
         references: { model: 'Users', key: 'id' }
       },
       roleAttributes: { type: Sequelize.JSONB, allowNull: false, defaultValue: '{}'},
-      type: { type: Sequelize.ENUM(['mecialProfessional', 'administrator', 'adminstrativeStaff']), allowNull: false},
+      type: { type: Sequelize.ENUM(['medicalProfessional', 'administrator', 'adminstrativeStaff']), allowNull: false},
       id: {
         allowNull: false,
         autoIncrement: true,

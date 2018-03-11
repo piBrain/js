@@ -6,6 +6,7 @@ import Interfaces from './interfaces'
 import Unions from './unions'
 import Enums from './enums'
 import resolvers from '../resolvers/combinedResolvers'
+
 import { makeExecutableSchema } from 'graphql-tools'
 const baseSchema = () => [ `
   scalar JSON

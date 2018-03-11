@@ -1,3 +1,3 @@
 export default () => [
-  `union User = MedicalProfessionals`
+  `union User = MedicalProfessional`
 ]

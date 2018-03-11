@@ -1,29 +1,27 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Patients', {
+    return queryInterface.createTable('MedicalDevices', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fistName: {
+      status: {
+        type: Sequelize.ENUM(['Active', 'Completed'])
+      },
+      startDate: {
+        type: Sequelize.DATE
+      },
+      productCode: {
         type: Sequelize.STRING
       },
-      lastName: {
+      productName: {
         type: Sequelize.STRING
       },
-      email: {
+      codeSystemName: {
         type: Sequelize.STRING
-      },
-      phoneNumber: {
-        type: Sequelize.STRING
-      },
-      headshotImgResourceLink: {
-        type: Sequelize.STRING,
-        allowNull: '',
-        defaultValue: ''
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +34,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Patients');
+    return queryInterface.dropTable('MedicalDevices');
   }
 };

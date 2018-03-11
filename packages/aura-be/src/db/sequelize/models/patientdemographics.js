@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     officePhone: DataTypes.STRING,
     mobilePhone: DataTypes.STRING,
     email: DataTypes.STRING,
-    address: DataTypes.JSONB
+    address: DataTypes.JSONB,
+    patientId: DataTypes.INTEGER
   }, );
   PatientDemographics.associate = (models) => {
   }
