@@ -1,14 +1,3 @@
-.other .top-c:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border: 5px solid white;
-  border-left-color: transparent;
-  border-bottom-color: transparent; }
-
 .self {
   justify-content: flex-end;
   align-items: flex-end; }
@@ -28,21 +17,3 @@
       border-right-color: transparent;
       border-top-color: transparent;
       box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); }
-
-.avatar {
-  display: block; }
-
-.messages {
-  background: white;
-  padding: 10px;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  text-align: center; }
-  .messages p.message {
-    font-size: 0.8rem;
-    margin: 0 0 0.2rem 0; }
-  .messages p.timestamp {
-    font-size: 0.6rem;
-    color: #ccc;
-    text-align: inherit; }
