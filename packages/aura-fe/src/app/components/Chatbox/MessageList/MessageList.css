@@ -1,22 +1,6 @@
-.discussion {
-  list-style: none;
-  background: #e5e5e5;
-  margin: 0;
-  padding: 100px 100px 100px 100px;
-  font: 12px 'PT Mono', monospace;
-  height: 60%;
-  overflow-y: scroll; }
-  .discussion li {
-    padding: 0.5rem;
-    overflow: hidden;
-    display: flex; }
-  .discussion .top-c {
-    position: relative;
-    width: 40px; }
-    .discussion .top-c img {
-      display: block;
-      width: 100%;
-      margin: 0 0 0 0; }
+.discussion .top-c {
+  position: relative;
+  width: 40px; }
 
 .fade-enter {
   opacity: 0.01; }

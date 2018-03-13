@@ -19,7 +19,19 @@ export default class MessageList extends Component {
       font: 12px 'PT Mono', monospace;
       height: 60%;
       position: relative;
-      height: 95%;
+      height: 80%;
+
+      > li {
+        padding: 0.5rem;
+        overflow: hidden;
+        display: flex;
+      }
+
+      > div > img {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
     `;
 
     return (
