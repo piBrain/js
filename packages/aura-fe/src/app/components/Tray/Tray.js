@@ -5,6 +5,7 @@ import ListItem from '../ListItem/ListItem.js';
 import NavButton from '../NavButton/NavButton.js';
 import SpeechButton from '../SpeechButton/SpeechButton.js';
 import {Motion, spring} from 'react-motion';
+import Collapse from 'react-collapse';
 
 const user_data = {
   first_name: 'Julia',
@@ -83,7 +84,15 @@ export default class Tray extends Component {
 
         :
 
-        <TrayWrapper></TrayWrapper>
+        <TrayWrapper>
+          <Collapse style={{width: 200, border: '1px solid red'}} isOpened={true}>
+            <ListWrapper>
+              <ListItem key={1} />
+              <ListItem key={2} />
+              <ListItem key={3} />
+            </ListWrapper>
+          </Collapse>
+        </TrayWrapper>
       )
     );
   }

@@ -24,7 +24,7 @@ export default class DashboardTab extends Component {
         defaultStyles={_defaultStyles}
         styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
           return i === 0
-          ? {y: spring(0, {stiffness: 60, damping: 8}), o: spring(1, presets.gentle)}
+          ? {y: spring(0, {stiffness: 90, damping: 8}), o: spring(1, presets.gentle)}
           : {y: spring(prevInterpolatedStyles[i-1].y), o: spring(prevInterpolatedStyles[i - 1].o)}
         })}>{ (interpolatingStyles)=>
             <div>
