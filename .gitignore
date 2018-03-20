@@ -3,6 +3,5 @@ node_modules
 packages/*/node_modules
 packages/*/lib
 packages/*/build
-packages/*/public
 .DS_store
 **/*..bfg-report
