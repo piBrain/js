@@ -42,6 +42,7 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-shallow-compare": "^15.6.0",
     "react-apollo": "^1.4.12",
+    "react-collapse": "^4.0.3",
     "react-css-modules": "^4.1.0",
     "react-css-transition-replace": "^2.2.0",
     "react-dom": "^15.6.1",

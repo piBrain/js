@@ -5,6 +5,7 @@ import ListItem from '../ListItem/ListItem.js';
 import NavButton from '../NavButton/NavButton.js';
 import SpeechButton from '../SpeechButton/SpeechButton.js';
 import {Motion, spring} from 'react-motion';
+import Collapse from 'react-collapse';
 
 const user_data = {
   first_name: 'Julia',
@@ -43,6 +44,8 @@ export default class Tray extends Component {
     `;
 
     const orientation  = this.props.orientation;
+
+    // I gotta refactor this fucking mess and put some of the elements in functions that return arrays but this will be fine for rn... my b
     return (
       (orientation === "left" ?
 
@@ -60,18 +63,20 @@ export default class Tray extends Component {
                 <Card style={{background: '#a1a1a1', width: interpolatingStyle.w + "%"}} dark={true} name={"Dr. Keeting"} location={"San Diego, CA"} profileImg={require('../../../assets/ian.JPG')}></Card>
             }
             </Motion>
-
             :
-
-            <ListWrapper className="doctor-info-w">
-              <ListItem columnKey={"First"} columnValue={user_data.first_name} />
-              <ListItem columnKey={"Last"} columnValue={user_data.last_name} />
-              <ListItem columnKey={"NIP"} columnValue={user_data.id} />
-              <ListItem columnKey={"Role"} columnValue={user_data.role} />
-              <ListItem columnKey={"Years"} columnValue={user_data.years} />
-              <NavButton linkTitle={"Options"} />
-            </ListWrapper>
+            ''
           }
+          <ListWrapper className="doctor-info-w">
+          {this.props.chatboxRender ?
+            [<NavButton key={0} linkTitle={"Transcriptions"} />, <NavButton key={1} linkTitle={"Patient Documents"} />]
+            :
+            [<ListItem key={0} columnKey={"First"} columnValue={user_data.first_name} />,
+            <ListItem key={1} columnKey={"Last"} columnValue={user_data.last_name} />,
+            <ListItem key={2} columnKey={"NIP"} columnValue={user_data.id} />,
+            <ListItem key={3} columnKey={"Role"} columnValue={user_data.role} />,
+            <ListItem key={4} columnKey={"Years"} columnValue={user_data.years} />, <NavButton key={5} linkTitle={"Options"} />]
+            }
+          </ListWrapper>
           <BotContainer>
             <SpeechButton toggleSpeech={this.props.toggleSpeech.bind(this)} />
           </BotContainer>
@@ -79,7 +84,15 @@ export default class Tray extends Component {
 
         :
 
-        <TrayWrapper></TrayWrapper>
+        <TrayWrapper>
+          <Collapse style={{width: 200, border: '1px solid red'}} isOpened={true}>
+            <ListWrapper>
+              <ListItem key={1} />
+              <ListItem key={2} />
+              <ListItem key={3} />
+            </ListWrapper>
+          </Collapse>
+        </TrayWrapper>
       )
     );
   }

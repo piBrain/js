@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import './Chatbox.css';
+import styled from 'styled-components';
 import MessageList from './MessageList/MessageList.jsx';
 import InputBox from './InputBox/InputBox.jsx';
 import ReactCSSTransitionReplace from 'react-css-transition-replace';
@@ -39,11 +39,20 @@ export default class Chatbox extends Component {
   render(props) {
     const messages = this.props.messageList.filter((msg) => msg.team === this.props.activeTeam.name)
     console.log(messages)
+
+    const ChatboxWrapper = styled.div`
+      display:block;
+      position:relative;
+      overflow-y:scroll;
+      float:left;
+      width: 54%;
+    `;
+
     return (
-      <div id="chatbox" className={this.props.loggedIn ?  "chatbox-container active" : "chatbox-container"}>
+      <ChatboxWrapper id="chatbox">
         <MessageList data={messages}/>
         <InputBox handleMessageSubmit={this.handleMessageSubmit}/>
-      </div>
+      </ChatboxWrapper>
     );
   }
 }
