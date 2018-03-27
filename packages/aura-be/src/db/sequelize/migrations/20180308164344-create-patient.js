@@ -22,7 +22,7 @@ module.exports = {
       },
       headshotImgResourceLink: {
         type: Sequelize.STRING,
-        allowNull: '',
+        allowNull: false,
         defaultValue: ''
       },
       createdAt: {
