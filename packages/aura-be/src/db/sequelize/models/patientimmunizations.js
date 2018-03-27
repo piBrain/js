@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     patientId: DataTypes.INTEGER
   },);
   PatientImmunizations.associate = (models) => {
-    PatientImmunizations.belongsTo(models.Patient, {sourceKey: 'patientId' })
+    PatientImmunizations.belongsTo(models.Patient, {foreignKey: 'patientId' })
   }
   return PatientImmunizations;
 };

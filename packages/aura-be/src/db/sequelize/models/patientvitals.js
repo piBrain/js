@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
   }, );
 
   PatientVitals.associate = (models) => {
-    PatientVitals.belongsTo(models.Patient, { sourceKey: 'patientId' })
+    PatientVitals.belongsTo(models.Patient, { foreignKey: 'patientId' })
   }
   return PatientVitals;
 };
