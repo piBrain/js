@@ -16,7 +16,8 @@ import schema from './db/graphql/schema/base_schema'
 import { execute, subscribe } from 'graphql';
 import authHandler from './authHandler'
 import login from './login'
-import authRedox from './redoxInit'
+import {authRedox, redoxHandler} from './redox'
+import kue  from 'kue'
 
 const redoxCredentials = authRedox()
   .then(resp => (resp))
@@ -25,23 +26,28 @@ const redoxCredentials = authRedox()
   })
 const backend = express()
 backend.use(cors())
-backend.use('/login', bodyParser.json(), login)
+backend.post('/redox', bodyParser.json(), redoxHandler)
+backend.get('/redox', bodyParser.json(), redoxHandler)
+if(process.env.NODE_ENV == 'local' || proces.env.NODE_ENV == 'test') {
+  backend.use('/queue', kue.app)
+}
+backend.post('/login', bodyParser.json(), login)
 backend.use(async (req, res, next) => {
-    const sessionToken = req.headers
-      && req.headers['session-token']
-      || undefined
-    try {
-      const {user, session} = await authHandler(sessionToken)
-        .catch(err => {throw new Error(err)})
-      req.session = session
-      req.user = user
-      next()
-    } catch(err) {
-      res.sendStatus(401)
-        .send(err.text)
-        .end()
-      return
-    }
+  const sessionToken = req.headers
+    && req.headers['session-token']
+    || undefined
+  try {
+    const {user, session} = await authHandler(sessionToken)
+      .catch(err => {throw new Error(err)})
+    req.session = session
+    req.user = user
+    next()
+  } catch(err) {
+    res.send(err.text)
+      .sendStatus(401)
+      .end()
+    return
+  }
 })
 backend.use(
   '/graphql',
