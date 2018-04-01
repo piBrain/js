@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
 import AuraPrompt from '../../components/AuraPrompt/AuraPrompt.js';
 import Tray from '../../components/Tray/Tray.js';
+import {Editor, EditorState} from 'draft-js';
+
 
 const auraTheme = {
   auraBlue: 'rgb(103,151,208)',
@@ -16,11 +18,8 @@ class TranscriptEditor extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      speechActive: false
-    }
-
+    this.state = {editorState: EditorState.createEmpty()};
+    this.onChange = (editorState) => this.setState({editorState});
     this.toggleSpeech = this.toggleSpeech.bind(this);
   }
 
@@ -32,7 +31,7 @@ class TranscriptEditor extends React.Component {
 
   render(props) {
 
-    const Editor = styled.div`
+    const EditorWrapper = styled.div`
       background-color: ${props => props.theme.cloudy };
       width: 100%;
       height: 100%;
@@ -42,9 +41,10 @@ class TranscriptEditor extends React.Component {
 
     return (
       <ThemeProvider theme={auraTheme}>
-        <Editor className="editor-wrapper">
+        <EditorWrapper className="editor-wrapper">
           <Tray chatboxRender={true} toggleSpeech={this.toggleSpeech} orientation={"left"} />
-        </Editor>
+          <Editor editorState={this.state.editorState} onChange={this.onChange} />
+        </EditorWrapper>
       </ThemeProvider>
     );
   }
