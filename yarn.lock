@@ -333,6 +333,12 @@ apollo-link-dedup@^1.0.0:
   dependencies:
     apollo-link "^1.2.1"
 
+apollo-link-error@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/apollo-link-error/-/apollo-link-error-1.0.7.tgz#df6d7b13e9b73f9a615547b65ec9a4c930ca7f18"
+  dependencies:
+    apollo-link "^1.2.1"
+
 apollo-link-http-common@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/apollo-link-http-common/-/apollo-link-http-common-0.2.3.tgz#82ae0d4ff0cdd7c5c8826411d9dd7f7d8049ca46"
@@ -10019,6 +10025,10 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
+stackback@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/stackback/-/stackback-0.0.2.tgz#1ac8a0d9483848d1695e418b6d031a3c3ce68e3b"
+
 stat-mode@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/stat-mode/-/stat-mode-0.2.2.tgz#e6c80b623123d7d80cf132ce538f346289072502"
@@ -11316,6 +11326,12 @@ which@1.2.14:
 white-space-x@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/white-space-x/-/white-space-x-2.0.3.tgz#d8af2a54e2e16f78abe5ff1811d5e9d4190c60d6"
+
+why-is-node-running@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/why-is-node-running/-/why-is-node-running-2.0.2.tgz#faf352f095356c8c37a28bf645f874e5648c8d02"
+  dependencies:
+    stackback "0.0.2"
 
 wide-align@^1.1.0:
   version "1.1.2"

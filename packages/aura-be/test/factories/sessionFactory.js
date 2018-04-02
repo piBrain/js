@@ -8,7 +8,7 @@ export const session = factory.define('session', db.Session, {
   password_reset_attempts: 0,
   supplied_reset_email: factory.chance('email'),
   local: false,
-  user_id: factory.assoc('user', '_id')
+  userId: factory.assoc('user', 'id')
 })
 
 

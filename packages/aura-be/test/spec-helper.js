@@ -7,15 +7,28 @@ import db from '../src/db/sequelize/models/db_connection'
 import FactoryGirl from 'factory-girl'
 import { beforeEach, afterEach } from 'mocha'
 import { ApolloClient } from 'apollo-client'
+import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http'
+import { onError } from 'apollo-link-error'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'node-fetch';
 import factories from './factories/db-factories'
 config()
 const makeClient = (headers) => {
+  const httpLink = new HttpLink({ uri: 'http://localhost:7327/graphql', fetch, headers })
+  const errorLink = onError(({graphQLErrors, networkError}) => {
+    if (graphQLErrors)
+      graphQLErrors.map(({ message, locations, path }) =>
+        console.error(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+        ),
+      );
+
+    if (networkError) console.error(`[Network error]: ${networkError}`);
+  })
   return new ApolloClient({
-    link: new HttpLink({ uri: 'http://localhost:7327/graphql', fetch, headers }),
-    cache: new InMemoryCache()
+    link: ApolloLink.from([errorLink, httpLink]),
+    cache: new InMemoryCache(),
   });
 }
 
