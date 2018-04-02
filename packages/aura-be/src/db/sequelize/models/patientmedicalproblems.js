@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     healthStatus: DataTypes.STRING,
     status: DataTypes.STRING
   }, );
-  var PatientMedicalProblems = (models) => {
-    PatientMedicalProblems.belongsTo(models.Patient, { sourceKey: 'patientId' })
+  PatientMedicalProblems.associate = (models) => {
+    PatientMedicalProblems.belongsTo(models.Patient, { foreignKey: 'patientId' })
   }
   return PatientMedicalProblems;
 };

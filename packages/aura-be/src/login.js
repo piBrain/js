@@ -9,9 +9,9 @@ const login = async (req, res) => {
     const user = await db.User.findOne({where: { email }})
     if(!user || !user.verifyPassword(password)) {
       const body = { err: true, response: 'Could not find a user with those credentials.' }
-      res.send(JSON.stringify(body))
-        .sendStatus(403)
-        .end()
+      res.status(403)
+         .send(JSON.stringify(body))
+         .end()
       return
     }
     const token = crypto.randomBytes(150).toString('base64')
@@ -22,9 +22,9 @@ const login = async (req, res) => {
   } catch(err) {
     console.error(err)
     const body = { err: true, response: err.message, data: {} }
-    res.send(JSON.stringify(body))
-      .sendStatus(403)
-      .end()
+    res.status(403)
+       .send(JSON.stringify(body))
+       .end()
   }
 }
 

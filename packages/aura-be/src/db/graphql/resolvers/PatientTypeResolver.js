@@ -1,3 +1,5 @@
+import db from '../../sequelize/models/db_connection'
+
 export default {
   Patient: {
     firstName(patient) { return patient.get('firstName') },
@@ -6,25 +8,28 @@ export default {
     phoneNumber(patient) { return patient.get('email') },
     headshotImgResourceLink(patient) { return patient.get('headshotImgResourceLink') },
     identifiers(patient) {
-      return db.PatientIdentifier.find({ where: { patientId: patient.get('id') } }) 
+      return db.PatientIdentifier.findAll({ where: { patientId: patient.get('id') } })
     },
     adminInformation(patient) {
       return db.PatientDemographics.findOne({ where: { patientId: patient.get('id') } })
     },
     allergies(patient) {
-      return db.PatientAllergy.find({ where: { patientId: patient.get('id') } })
+      return db.PatientAllergies.findAll({ where: { patientId: patient.get('id') } })
     },
     immunizations(patient) {
-      return db.PatientImmunizations.find({ where: { patientId: patient.get('id') } })
+      return db.PatientImmunizations.findAll({ where: { patientId: patient.get('id') } })
     },
     vitals(patient) {
-      return db.PatientImmunizations.find({ where: { patientId: patient.get('id') } })
+      return db.PatientVitals.findAll({ where: { patientId: patient.get('id') } })
     },
     familyHistory(patient) {
-      return db.PatientFamilyHistory.find({ where: { patientId: patient.get('id') } })
+      return db.PatientFamilyHistory.findAll({ where: { patientId: patient.get('id') } })
     },
     medicalProblems(patient) {
-      return db.PatientMedicalProblems.find({ where: { patientId: patient.get('id') } })
+      return db.PatientMedicalProblems.findAll({ where: { patientId: patient.get('id') } })
+    },
+    async resources(patient) {
+      return db.PatientResource.findAll({ where: { patientId: patient.get('id') } })
     }
   }
 }

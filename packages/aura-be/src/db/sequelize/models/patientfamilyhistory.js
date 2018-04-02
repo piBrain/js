@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     relationDeceased: DataTypes.BOOLEAN
   }, );
   PatientFamilyHistory.associate = (models) => {
-    PatientFamilyHistory.belongsTo(models.Patient, { sourceKey: 'patientId' })
+    PatientFamilyHistory.belongsTo(models.Patient, { foreignKey: 'patientId' })
   }
   return PatientFamilyHistory;
 };

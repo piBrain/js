@@ -1,1 +1,4 @@
 .configs
+yarn-error.log
+dump.rdb
+error.html

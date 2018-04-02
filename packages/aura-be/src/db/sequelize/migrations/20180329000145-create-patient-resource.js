@@ -1,29 +1,24 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Patients', {
+    return queryInterface.createTable('PatientResources', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fistName: {
-        type: Sequelize.STRING
+      type: {
+        type: Sequelize.ENUM(['TRANSCRIPTION', 'LAB_RESULT', 'IMAGING']),
+        allowNull:false
       },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      phoneNumber: {
-        type: Sequelize.STRING
-      },
-      headshotImgResourceLink: {
+      s3Url: {
         type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: ''
+      },
+      patientId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Patients', key: 'id' }
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +31,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Patients');
+    return queryInterface.dropTable('PatientResources');
   }
 };

@@ -1,4 +1,3 @@
-import Sequelize from 'sequelize'
 import Umzug from 'umzug'
 import path from 'path'
 import config from '../config'
@@ -7,7 +6,31 @@ import chaiHttp from 'chai-http'
 import db from '../src/db/sequelize/models/db_connection'
 import FactoryGirl from 'factory-girl'
 import { beforeEach, afterEach } from 'mocha'
+import { ApolloClient } from 'apollo-client'
+import { ApolloLink } from 'apollo-link';
+import { HttpLink } from 'apollo-link-http'
+import { onError } from 'apollo-link-error'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'node-fetch';
+import factories from './factories/db-factories'
 config()
+const makeClient = (headers) => {
+  const httpLink = new HttpLink({ uri: 'http://localhost:7327/graphql', fetch, headers })
+  const errorLink = onError(({graphQLErrors, networkError}) => {
+    if (graphQLErrors)
+      graphQLErrors.map(({ message, locations, path }) =>
+        console.error(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+        ),
+      );
+
+    if (networkError) console.error(`[Network error]: ${networkError}`);
+  })
+  return new ApolloClient({
+    link: ApolloLink.from([errorLink, httpLink]),
+    cache: new InMemoryCache(),
+  });
+}
 
 const dbConfig = {
   dialect: 'postgres',
@@ -21,36 +44,34 @@ const dbConfig = {
     max: 0,
   }
 }
-
 export const testDB = db
 testDB.sequelize.options.logging = false
-const migrator = new Umzug({
-  storageOptions: {
-    sequelize: testDB.sequelize
-  },
-  migrations: {
-    params: [
-      testDB.sequelize.getQueryInterface(),
-      Sequelize
-    ],
-    path: path.join(__dirname, "../src/db/sequelize/migrations")
-  }
-})
 
 const chaiSetUp = () => {
   chai.use(chaiHttp)
   return chai
 }
-const startUp = () => {
-  return migrator.up()
+const startUp = async () => {
+  try {
+    await testDB.sequelize.truncate({cascade: true})
+  } catch(err) {
+    console.error(err.trace)
+    throw err
+  }
 }
-const tearDown = () => {
-  return testDB.sequelize.truncate({cascade: true})
+
+const makeAndAuthUser = async () => {
+  const session = await factories.create('session')
+  return { user: session.getUser(), session }
 }
+
 
 export const prepareTestEnvironment = () => {
     beforeEach(startUp)
-    afterEach(tearDown)
-    return { chai: chaiSetUp(), server_address: `http://localhost:${process.env.LISTEN_PORT}` }
+    return {
+      chai: chaiSetUp(),
+      makeApolloClient: makeClient,
+      makeAndAuthUser
+    }
 }
 

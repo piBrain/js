@@ -48,6 +48,7 @@ export default () => [
       vitals: [PatientVitals],
       familyHistory: [PatientFamilyHistory],
       medicalProblems: [PatientMedicalProblem]
+      resources: [PatientResource]
 
   }`,
 
@@ -118,7 +119,9 @@ export default () => [
     category: String,
     categorySystemName: String,
     healthStatus: String,
+  }`,
+  `type PatientResource {
+    s3Url: String!,
+    type: String!,
   }`
-
-
 ]
