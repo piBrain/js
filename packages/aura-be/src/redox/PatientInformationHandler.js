@@ -72,29 +72,39 @@ export default async (data) => {
   if(!patientData) {
     throw new Error('No patient data.')
   }
-  const demographicsData = patientData.Demographics
-  const patient = await identifierReducer(patientData.Identifiers)
-  const transaction = db.sequelize.transaction()
-  patient.set({
-    email: parseEmail(demographicsData.EmailAddresses[0]),
-    firstName: demographicsData.FirstName,
-    lastName: demographicsData.LastName,
-    phoneNumber: demographicsData.PhoneNumber.Mobile,
-  })
-  await patient.save({ transaction })
-  const demographics = await db.PatientDemographics.findOne({where: { patientId: patient.get('id') }})
-  demographicsReducer(demographics, demographicsData, patient.get('id'))
+  const transaction = await db.sequelize.transaction()
+  //Update the patient demographics.
   try {
+    const demographicsData = patientData.Demographics
+    const patient = await identifierReducer(patientData.Identifiers)
+    patient.set({
+      email: parseEmail(demographicsData.EmailAddresses[0]),
+      firstName: demographicsData.FirstName,
+      lastName: demographicsData.LastName,
+      phoneNumber: demographicsData.PhoneNumber.Mobile,
+    })
+    await patient.save({ transaction })
+    const demographics = await db.PatientDemographics.findOne({where: { patientId: patient.get('id') }})
+    demographicsReducer(demographics, demographicsData, patient.get('id'))
+    transaction.commit()
+    //Loop through the reducers defined above and try to consume the data for each one, if one fails keep going
     for(let sectionHeader of Object.keys(reducers)) {
-      if(data[sectionHeader]) {
-        // Grab the appropriate data and reducer for the particular section of data we want to injest
-        const existingData = await db[reducers[sectionHeader][1]].findAll({ where: { patientId: patient.get('id') } })
-        reducers[sectionHeader][0](existingData, data[sectionHeader], patient.get('id'))
+      try {
+        if(data[sectionHeader]) {
+          // Grab the appropriate data and reducer for the particular section of data we want to injest
+          const existingData = await db[reducers[sectionHeader][1]]
+                .findAll({ where: { patientId: patient.get('id') } })
+          reducers[sectionHeader][0](existingData, data[sectionHeader], patient.get('id'))
+        }
+      }
+      catch(err) {
+        console.log(err)
+        console.error(err.trace)
       }
     }
-  }
-  catch(err) {
-    throw new Error(err)
+  } catch(err) {
+    transaction.rollback()
+    console.error(err.trace)
   }
 }
 

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var PatientIdentifier = sequelize.define('PatientIdentifier', {
-    type: DataTypes.ENUM(['MR']),
+    type: DataTypes.ENUM('MR', 'EHRID', 'NIST'),
     patientId: DataTypes.INTEGER,
     identifier: DataTypes.STRING,
   }, {

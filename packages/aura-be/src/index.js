@@ -18,17 +18,21 @@ import authHandler from './authHandler'
 import login from './login'
 import {authRedox, redoxHandler} from './redox'
 import kue  from 'kue'
-
-const redoxCredentials = authRedox()
-  .then(resp => (resp))
-  .catch(e => {
-      throw new Error('Redox unreachable.')
-  })
+let redoxCredentials = null
+if(!process.env.NODE_ENV === 'test') {
+  redoxCredentials = authRedox()
+    .then(resp => (resp))
+    .catch(e => {
+        throw new Error('Redox unreachable.')
+    })
+} else {
+  redoxCredentials = {}
+}
 const backend = express()
 backend.use(cors())
 backend.post('/redox', bodyParser.json(), redoxHandler)
 backend.get('/redox', bodyParser.json(), redoxHandler)
-if(process.env.NODE_ENV == 'local' || proces.env.NODE_ENV == 'test') {
+if(process.env.NODE_ENV === 'local' || process.env.NODE_ENV === 'test') {
   backend.use('/queue', kue.app)
 }
 backend.post('/login', bodyParser.json(), login)
@@ -43,10 +47,8 @@ backend.use(async (req, res, next) => {
     req.user = user
     next()
   } catch(err) {
-    res.send(err.text)
-      .sendStatus(401)
-      .end()
-    return
+    err.status = 401
+    next(err)
   }
 })
 backend.use(
@@ -69,31 +71,50 @@ backend.use(
       subscriptionURL: '/subscriptions'
     }),
 )
+
+backend.use((err, req, res, next) => {
+  console.error(err.trace)
+  if(err.status) {
+    res.status(err.status)
+       .send(JSON.stringify(err))
+       .end()
+  } else {
+    res.status(500)
+       .send(JSON.stringify('Internal server error.'))
+       .end()
+  }
+  return
+})
 const db_sync_result = initDB()
 
 export { backend }
 export async function initHttpServer() {
   let db_success = await db_sync_result
   console.log(`process.env.DATABASE_URL: ${process.env.DATABASE_URL}`)
-  const apolloEngine = new ApolloEngine({
-    apiKey: process.env.APOLLO_ENGINE_API_KEY
-  })
-  apolloEngine.listen({ port: process.env.LISTEN_PORT, expressApp: backend}, () => {
+  let server = null
+  if(process.env.NODE_ENV == 'test') {
+    server = createServer(backend)
+  } else {
+    server = new ApolloEngine({
+      apiKey: process.env.APOLLO_ENGINE_API_KEY
+    })
+  }
+  server.listen({port: process.env.LISTEN_PORT, expressApp: backend}, () => {
     new SubscriptionServer({
         execute,
         subscribe,
         schema
       }, {
-        server: apolloEngine,
+        server: server,
         path: '/subscriptions',
       });
   })
   return new Promise((resolve, reject) => {
-    apolloEngine.on('listening', () => {
+    server.on('listening', () => {
       console.log(`DataQA API now listening on port ${process.env.LISTEN_PORT}`)
-      resolve(apolloEngine)
+      resolve(server)
     })
-    apolloEngine.on('error', err => reject(err))
+    server.on('error', err => reject(err))
   })
 }
 
