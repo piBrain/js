@@ -68,7 +68,7 @@ export default class Tray extends Component {
           }
           <ListWrapper className="doctor-info-w">
           {this.props.chatboxRender ?
-            [<NavButton key={0} linkTitle={"Transcriptions"} />, <NavButton key={1} linkTitle={"Patient Documents"} />]
+            [<NavButton key={0} linkTitle={ this.props.fe ? "Dashboard" : "Transcriptions"} />, <NavButton key={1} linkTitle={"Patient Documents"} />]
             :
             [<ListItem key={0} columnKey={"First"} columnValue={user_data.first_name} />,
             <ListItem key={1} columnKey={"Last"} columnValue={user_data.last_name} />,

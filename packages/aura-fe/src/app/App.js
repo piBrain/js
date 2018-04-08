@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import DashboardContainer from './containers/Dashboard/DashboardContainer';
 import DocumentsContainer from './containers/Documents/DocumentsContainer';
 import FileExplorerContainer from './containers/FileExplorer/FileExplorerContainer';
+import TranscriptEditor from './containers/TranscriptEditor/TranscriptEditor';
 import ChatWindow from './containers/ChatWindow/ChatWindow';
 import { withTheme } from 'styled-components';
 
@@ -33,6 +34,7 @@ class App extends React.Component {
                 <Route exact path='/chat' component={ChatWindow} theme={this.props.theme}/>
                 <Route exact path='/docs' component={DocumentsContainer} theme={this.props.theme}/>
                 <Route exact path='/transcripts' component={FileExplorerContainer} theme={this.props.theme}/>
+                <Route exact path='/editor' component={TranscriptEditor} theme={this.props.theme}/>
               </Switch>
           </div>
 		  </ApolloProvider>
