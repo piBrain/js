@@ -1,4 +1,5 @@
 # welcome to js funland
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/8937b9e1f86b9c8a98b0d04e7121791b.svg?columns=all)](https://waffle.io/piBrain/js)
 
 
 ## Project Dependencies
