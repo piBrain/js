@@ -4,8 +4,46 @@ import {StaggeredMotion, spring, presets } from 'react-motion';
 
 export default class DocumentsTab extends Component {
 
+  constructor(props) {
+    super(props);
+    this._renderFiles= this._renderFiles.bind(this);
+  }
+
+  _renderFiles() {
+    const DocumentRow = styled.div`
+      width: 100%;
+      float:left;
+      height: 60px;
+      border: 1px solid white;
+      background: #333;
+    `;
+
+    const FileName = styled.p`
+      float:left;
+    `;
+
+    const ForwardButton = styled.img`
+      float:right;
+    `;
+
+    const files = this.props.files;
+
+    const Files = files.map((file, idx) => {
+
+      return(
+        <DocumentRow key={idx} >
+          <FileName key={idx} >{file.name}</FileName>
+          <ForwardButton />
+        </DocumentRow>
+      );
+    });
+
+    return(Files);
+  }
+
+
   render(props) {
-    const DashboardTab = styled.div`
+    const DocumentsTab = styled.div`
       width: 100%;
       overflow:hidden;
     `;
@@ -18,8 +56,9 @@ export default class DocumentsTab extends Component {
     }
 
     return (
-      <DashboardTab className={this.props.label}>
-      </DashboardTab>
+      <DocumentsTab className={this.props.label}>
+        {this._renderFiles()}
+      </DocumentsTab>
     );
   }
 }

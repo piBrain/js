@@ -90,6 +90,22 @@ class DocumentsContainer extends React.Component {
       height: 100%;
       overflow:hidden;
       font-family: 'Noto Sans', sans-serif;
+
+      p {
+        color: #202020;
+      }
+
+      .tabs__labels {
+        margin-top:0;
+      }
+
+      .tabs {
+        width:100%;
+      }
+
+      .tabs__content {
+        padding: 0;
+      }
     `;
 
     const CenterContainer = styled.div`
@@ -108,9 +124,9 @@ class DocumentsContainer extends React.Component {
           </CenterContainer>
           <Documents className="documents-wrapper">
             <Tabs>
-              <DocumentsTab label={""} files={files_table} />
-              <DocumentsTab label={""} files={files_table} />
-              <DocumentsTab label={""} files={files_table} />
+              <DocumentsTab key={0} label={"Labs"} files={files_table} />
+              <DocumentsTab key={1} label={"Imaging"} files={files_table} />
+              <DocumentsTab key={2} label={"Refferals"} files={files_table} />
             </Tabs>
           </Documents>
         </div>
