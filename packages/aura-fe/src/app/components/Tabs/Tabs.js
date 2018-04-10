@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import {Motion, spring} from 'react-motion';
 
 export default class Tabs extends Component {
-
-
   constructor(props) {
     super(props);
 
