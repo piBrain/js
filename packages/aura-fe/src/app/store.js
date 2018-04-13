@@ -25,7 +25,7 @@ const session = createSession({
   selectState: (state) => ({
     token : state.session.token,
     loggedIn: state.session.loggedIn,
-    activeTeam: state.session.activeTeam
+    team: state.session.team
   }),
   adapter: 'localStorage'
 })
