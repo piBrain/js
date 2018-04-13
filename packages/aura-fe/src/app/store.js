@@ -37,9 +37,8 @@ const combinedReducers = combineReducers({
   forms: formsReducer,
   session: sessionReducer
 })
-
-const store = createStore(combinedReducers, /* preloadedState, */ compose(
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(combinedReducers, /* preloadedState, */ composeEnhancers(
   applyMiddleware(thunk, session),
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 ));
 export { store, apolloClient }
