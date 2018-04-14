@@ -77,7 +77,7 @@ class FileExplorerContainer extends React.Component {
     return (
       <ThemeProvider theme={auraTheme}>
         <FileExplorer className="dashboard-wrapper">
-          <Tray fe={true} chatboxRender={true} toggleSpeech={this.toggleSpeech} orientation={"left"} />
+          <Tray fe={true} chatboxRender={true} toggleSpeech={this.props.toggleVoice} orientation={"left"} />
           <FileGrid files={mock_file_data} className="fg-w" />
         </FileExplorer>
       </ThemeProvider>

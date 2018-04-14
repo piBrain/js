@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
       <Route {...rest} render={(props) => {
         return (rest.loggedIn === true && rest.token
-          ? <Component {...props} />
+          ? <Component {...props} {...rest} />
           : <Redirect to='/login' push />)
       }} />
 )}

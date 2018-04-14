@@ -17,17 +17,6 @@ class ChatWindow extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      speechActive: false
-    }
-
-    this.toggleSpeech = this.toggleSpeech.bind(this);
-  }
-
-  toggleSpeech(e) {
-    e.preventDefault();
-    this.setState({speechActive: !this.state.speechActive})
   }
 
 
@@ -44,11 +33,11 @@ class ChatWindow extends React.Component {
     return (
       <ThemeProvider theme={auraTheme}>
         <Chat className="dashboard-wrapper">
-          <Tray chatboxRender={true} toggleSpeech={this.toggleSpeech} orientation={"left"} />
+          <Tray chatboxRender={true} toggleSpeech={this.props.toggleVoice} orientation={"left"} />
           <div>
             <Chatbox messageList={[]}/>
           </div>
-          <Tray toggleSpeech={this.toggleSpeech} orientation={"right"} />
+          <Tray toggleSpeech={this.toggleVoice} orientation={"right"} />
         </Chat>
       </ThemeProvider>
     );
