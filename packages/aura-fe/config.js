@@ -1,9 +1,6 @@
 const configs = {
-  local: {
-    apiUrl: 'http://localhost:4200',
-  },
   development: {
-    apiUrl: 'https://p3hr3zqnwc.execute-api.us-east-1.amazonaws.com/dev',
+    apiUrl: 'http://localhost:4200',
   },
   production: {
     apiUrl: 'https://p3hr3zqnwc.execute-api.us-east-1.amazonaws.com/prod',

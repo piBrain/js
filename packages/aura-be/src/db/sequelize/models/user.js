@@ -65,10 +65,15 @@ module.exports = function(sequelize, DataTypes) {
   }
 
   User.prototype.verifyPassword = async function(suppliedPassword) {
-    if(await argon2.verify(this.password, suppliedPassword)) {
-      return true
-    }
-    return false
+      try {
+          if(await argon2.verify(this.password, suppliedPassword)) {
+              return true
+          }
+          return false
+      } catch(err) {
+          console.error(err)
+          return false
+      }
   }
   return User;
 };

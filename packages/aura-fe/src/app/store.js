@@ -25,7 +25,7 @@ const session = createSession({
   selectState: (state) => ({
     token : state.session.token,
     loggedIn: state.session.loggedIn,
-    activeTeam: state.session.activeTeam
+    team: state.session.team
   }),
   adapter: 'localStorage'
 })
@@ -37,9 +37,8 @@ const combinedReducers = combineReducers({
   forms: formsReducer,
   session: sessionReducer
 })
-
-const store = createStore(combinedReducers, /* preloadedState, */ compose(
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(combinedReducers, /* preloadedState, */ composeEnhancers(
   applyMiddleware(thunk, session),
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 ));
 export { store, apolloClient }
