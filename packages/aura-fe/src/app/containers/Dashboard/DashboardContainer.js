@@ -65,19 +65,7 @@ class DashboardContainer extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      speechActive: false
-    }
-
-    this.toggleSpeech = this.toggleSpeech.bind(this);
   }
-
-  toggleSpeech(e) {
-    e.preventDefault();
-    this.setState({speechActive: !this.state.speechActive})
-  }
-
 
   render(props) {
 
@@ -92,8 +80,8 @@ class DashboardContainer extends React.Component {
     return (
       <ThemeProvider theme={auraTheme}>
         <Dashboard className="dashboard-wrapper">
-          <Tray toggleSpeech={this.toggleSpeech} orientation={"left"} />
-          <AuraPrompt isActive={this.state.speechActive} />
+          <Tray toggleSpeech={this.props.toggleVoice} orientation={"left"} />
+          <AuraPrompt isActive={this.props.recording} />
             <Tabs>
               <DashboardTab label={"Staff"} users={staff_table} />
               <DashboardTab label={"Patients"} users={patient_table} />

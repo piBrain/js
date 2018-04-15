@@ -20,14 +20,7 @@ class TranscriptEditor extends React.Component {
     super(props);
     this.state = {editorState: EditorState.createEmpty()};
     this.onChange = (editorState) => this.setState({editorState});
-    this.toggleSpeech = this.toggleSpeech.bind(this);
   }
-
-  toggleSpeech(e) {
-    e.preventDefault();
-    this.setState({speechActive: !this.state.speechActive})
-  }
-
 
   render(props) {
 
@@ -42,7 +35,7 @@ class TranscriptEditor extends React.Component {
     return (
       <ThemeProvider theme={auraTheme}>
         <EditorWrapper className="editor-wrapper">
-          <Tray chatboxRender={true} toggleSpeech={this.toggleSpeech} orientation={"left"} />
+          <Tray chatboxRender={true} toggleSpeech={this.props.toggleVoice} orientation={"left"} />
           <Editor editorState={this.state.editorState} onChange={this.onChange} />
         </EditorWrapper>
       </ThemeProvider>

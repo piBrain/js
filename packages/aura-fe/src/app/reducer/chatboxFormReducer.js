@@ -1,7 +1,7 @@
 import {
   DISPLAY_RESPONSE_MESSAGE, ADD_MESSAGE_TO_LIST,
   CLEAR_PENDING_MESSAGES, ADD_PENDING_MESSAGE
-} from '../actions.js'
+} from '../actions'
 
 
 const componentInitialState = {
